@@ -24,7 +24,6 @@ const handler = NextAuth({
       clientId: process.env.GITHUB_ID as string,
       clientSecret: process.env.GITHUB_SECRET as string,
     }),
-
     GoogleProvider({
       async profile(profile) {
         //console.log("Google profile: ", profile)
