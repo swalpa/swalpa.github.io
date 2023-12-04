@@ -1,10 +1,16 @@
 import Loading from "@/components/common/Loading"
-import useFetchAllProjectDetails from "@/services/hooks/useFetchAllProjectDetails"
-import { getSpecificProject } from "@/services/serverActions"
-import Image from "next/image"
+import { getProjects, getSpecificProject } from "@/services/serverActions"
+import axios from "axios";
 import Link from "next/link"
 import { Suspense } from "react"
 
+export async function generateStaticParams() {
+  const { data } = await axios.get<ProjectType[]>(`https://swalpa-backend.onrender.com/projects`);
+  if (!data) return [];
+  return data.map((project) => ({
+    id: project._id,
+  }));
+}
 const Page = async ({ params }: { params: { id: string } }) => {
 
   const project = await getSpecificProject(params.id);
@@ -23,7 +29,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             }
           </div>
           {
-            project.image && <Image src={project.image} width={250} height={250} alt="image" className="w-full h-44 md:h-56 lg:h-72 xl:h-80 object-cover rounded-md px-5" />
+            project.image && <img src={project.image} width={250} height={250} alt="image" className="w-full h-44 md:h-56 lg:h-72 xl:h-80 object-cover rounded-md px-5" />
           }
           <div className="px-3 w-full">
             <h3 className="text-3xl font-medium my-2">Description</h3>

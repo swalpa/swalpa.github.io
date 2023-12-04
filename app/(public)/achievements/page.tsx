@@ -17,7 +17,7 @@ const Page = async () => {
             <h3 className="text-2xl font-semibold my-2 mb-4 px-2">International recognitions</h3>
             {
               achievements.filter((obj) => obj.category === AchievementCategory.International).map((achievement, index) => (
-                <Achievement key={index} admin={false} achievement={achievement} />
+                <Achievement key={index} achievement={achievement} />
               ))
             }
           </div>
@@ -25,7 +25,7 @@ const Page = async () => {
             <h3 className="text-2xl font-semibold my-2 px-2">National recognitions</h3>
             {
               achievements.filter((obj) => obj.category === AchievementCategory.National).map((achievement, index) => (
-                <Achievement key={index} admin={false} achievement={achievement} />
+                <Achievement key={index} achievement={achievement} />
               ))
             }
           </div>

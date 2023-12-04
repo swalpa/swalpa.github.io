@@ -1,45 +1,44 @@
 "use client"
 import { LucideAward, LucidePencil, LucideTrash2 } from 'lucide-react'
-import { toast } from 'sonner'
-import { Dialog, DialogContent, DialogHeader, DialogTrigger } from './ui/dialog'
-import { useForm } from 'react-hook-form'
-import { Button } from './ui/button'
-import { AchievementCategory } from '@/types/enums.'
-import axios from 'axios'
+// import { toast } from 'sonner'
+// import { Dialog, DialogContent, DialogHeader, DialogTrigger } from './ui/dialog'
+// import { useForm } from 'react-hook-form'
+// import { Button } from './ui/button'
+// import { AchievementCategory } from '@/types/enums.'
+// import axios from 'axios'
 import DOMPurify from 'isomorphic-dompurify'
-import NormalInput from './admin-panel/NormalInput'
 
-const Achievement = ({ achievement, admin }: { achievement: AchievementType, admin: boolean }) => {
-  const { handleSubmit, register, setValue, watch, formState: { errors } } = useForm<AchievementType>({ defaultValues: achievement })
-  const category = watch('category')
-  const statement = watch('statement')
-  const handleDelete = async (data: AchievementType) => {
-    try {
-      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/achievements/${achievement._id}`)
-      toast.success('Deleted successfully')
-    } catch (error) {
-      console.log(error)
-      toast.error('Something went wrong')
-    }
-  }
+const Achievement = ({ achievement }: { achievement: AchievementType, }) => {
+  // const { handleSubmit, register, setValue, watch, formState: { errors } } = useForm<AchievementType>({ defaultValues: achievement })
+  // const category = watch('category')
+  // const statement = watch('statement')
+  // const handleDelete = async (data: AchievementType) => {
+  //   try {
+  //     await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/achievements/${achievement._id}`)
+  //     toast.success('Deleted successfully')
+  //   } catch (error) {
+  //     console.log(error)
+  //     toast.error('Something went wrong')
+  //   }
+  // }
 
-  const handleEdit = async (editedAchievement: AchievementType) => {
-    try {
-      const { data } = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/achievements/${achievement._id}`, editedAchievement)
-      achievement = data
-      toast.success('Edited successfully')
-    } catch (error) {
-      console.log(error)
-      toast.error('Something went wrong')
-    }
-  }
+  // const handleEdit = async (editedAchievement: AchievementType) => {
+  //   try {
+  //     const { data } = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/achievements/${achievement._id}`, editedAchievement)
+  //     achievement = data
+  //     toast.success('Edited successfully')
+  //   } catch (error) {
+  //     console.log(error)
+  //     toast.error('Something went wrong')
+  //   }
+  // }
   return (
-    <div className={`flex ${admin ? "items-center" : null} gap-x-2 font-normal text-base text-black text-opacity-80 my-1 p-1`}>
+    <div className={`flex gap-x-2 font-normal text-base text-black text-opacity-80 my-1 p-1`}>
       <div className='w-[3%]'>
         <LucideAward size={25} className='invisible lg:visible'/>
       </div>
-      <div className={`${admin ? "w-[88%]" : "sw-[97%]"} text-base lg:text-lg text-justify`} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(achievement.statement) }} />
-      {
+      <div className={`sw-[97%]"} text-base lg:text-lg text-justify`} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(achievement.statement) }} />
+      {/* {
         admin && (
           <div className="flex gap-x-1">
             <Dialog>
@@ -68,7 +67,7 @@ const Achievement = ({ achievement, admin }: { achievement: AchievementType, adm
             </Dialog>
           </div>
         )
-      }
+      } */}
     </div>
   )
 }

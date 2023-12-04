@@ -1,8 +1,16 @@
 import Loading from "@/components/common/Loading";
 import { getSpecificTeaching } from "@/services/serverActions";
+import axios from "axios";
 import DOMPurify from "isomorphic-dompurify";
 import { Suspense } from "react";
 
+export async function generateStaticParams() {
+  const { data } = await axios.get<{ _id: string}[]>(`https://swalpa-backend.onrender.com/teaching/ids`)
+  if (!data) return [];
+  return data.map((project) => ({
+    id: project._id,
+  }));
+}
 const Page = async ({ params }: { params: { id: string } }) => {
   const data = await getSpecificTeaching(params.id)
 

@@ -39,10 +39,11 @@ const links: Link[] = [
         name: 'Publications',
         href: '/publications'
     },
-    {
-        name: 'Team',
-        href: '/team'
-    },
+    //!Inportant design update has to be done
+    // {
+    //     name: 'Team', 
+    //     href: '/team'
+    // },
 ]
 
 const Navbar = () => {
