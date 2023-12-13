@@ -53,12 +53,17 @@ const Navbar = () => {
 
     return (
         <main className='w-full h-12 bg-white drop-shadow-md text-black flex justify-around items-center sticky top-0 z-10'>
-            <div className='font-semibold text-2xl'>SWALPA KUMAR ROY</div>
+            <Link href={'https://swalpa.github.io'} className='font-semibold text-2xl'>SWALPA KUMAR ROY</Link>
             <div className='flex flex-col-reverse'>
                 <div className={`${open ? "flex flex-col left-0 top-12" : "hidden lg:flex"} bg-white w-full items-center gap-2 lg:gap-4 absolute lg:relative p-2`}>
                     {
                         links.map((link: Link, index: number) => (
-                            <Link onClick={()=> setOpen(false)} key={index} href={link.href} className={`${path === link.href || (path.includes('/teaching') && link.name === "Teaching") ? "font-bold" : ""}`}>{link.name}</Link>
+                            <Link onClick={()=> setOpen(false)} key={index} href={link.href} className={`${path === link.href || (path.includes('/teaching') && link.name === "Teaching") ? "font-bold" : ""}`}>
+                                <>
+                                    <p>{link.name}</p>
+                                    <div className={`${path === link.href || (path.includes('/teaching') && link.name === "Teaching") ? "bg-black h-[0.15rem] mt-[0.15rem]" : ""}`}></div>
+                                </>
+                            </Link>
                         ))
                     }
                 </div>
