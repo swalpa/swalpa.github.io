@@ -8,6 +8,11 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
+  
+  schedule:
+    # Runs at 12am UTC every day
+    - cron: "0 0 * * *"
+    #00 6 1-31 1-12 0-6
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
