@@ -9,7 +9,7 @@ const useFetchTeachingAllDetails = (id: string): TeachingAllDetails | null | fal
       setTeachingAllDetails(null)
       if (!id ||  id === "") return false;
       try {
-        const { data } = await axios.get<TeachingAllDetails>(`${process.env.NEXT_PUBLIC_API_URL}/teaching/${id}`)
+        const { data } = await axios.get<TeachingAllDetails>(`https://swalpa-backend.onrender.com/teaching/${id}`)
         setTeachingAllDetails(data)
       } catch (error) {
         console.log(error)

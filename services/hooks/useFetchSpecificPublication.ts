@@ -6,7 +6,7 @@ const useFetchSpecificPublication = (id: string) => {
   useEffect(()=> {
     (async () => {
       try {
-        const { data } = await axios.get<Publication>(`${process.env.NEXT_PUBLIC_API_URL}/publications/${id}`)
+        const { data } = await axios.get<Publication>(`https://swalpa-backend.onrender.com/publications/${id}`)
         setPublication(data)
       } catch (error) {
         console.log(error)

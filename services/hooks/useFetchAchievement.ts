@@ -7,7 +7,7 @@ const useFetchAchievements = () => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/achievements`)
+        const { data } = await axios.get(`https://swalpa-backend.onrender.com/achievements`)
         setAchievements(data)
       } catch (error) {
         console.log(error)

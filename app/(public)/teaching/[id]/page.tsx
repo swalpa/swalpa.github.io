@@ -11,6 +11,7 @@ export async function generateStaticParams() {
     id: project._id,
   }));
 }
+
 const Page = async ({ params }: { params: { id: string } }) => {
   const data = await getSpecificTeaching(params.id)
 

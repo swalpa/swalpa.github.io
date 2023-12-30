@@ -6,7 +6,7 @@ const useFetchAllProjectDetails = (id: string) => {
   useEffect(()=> {
     (async ()=> {
       try {
-        const { data } = await axios.get<ProjectType>(`${process.env.NEXT_PUBLIC_API_URL}/projects/${id}`);
+        const { data } = await axios.get<ProjectType>(`https://swalpa-backend.onrender.com/projects/${id}`);
         setProject(data);
       } catch (error) {
         console.log(error);

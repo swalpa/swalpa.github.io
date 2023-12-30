@@ -8,7 +8,7 @@ export function useFetchTeaching(): TeachingHighlights[] {
     useEffect(()=> {
         (async ()=> {
            try {
-                const { data } = await axios.get<TeachingHighlights[]>(`${process.env.NEXT_PUBLIC_API_URL}/teaching`);
+                const { data } = await axios.get<TeachingHighlights[]>(`https://swalpa-backend.onrender.com/teaching`);
                 console.log(data);
                 setTeachings(data);
            } catch (error) {
