@@ -32,10 +32,6 @@ const links: Link[] = [
         href: '/achievements'
     },
     {
-        name: 'Internship',
-        href: '/internship'
-    },
-    {
         name: 'Publications',
         href: '/publications'
     },

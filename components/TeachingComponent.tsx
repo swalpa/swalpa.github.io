@@ -7,7 +7,7 @@ const Page = async ({ editing }: { editing: boolean }) => {
   const teachingsHighlights = await getTeachings();
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <div className="w-full flex justify-center p-4 lg:p-7 min-h-[85vh]">
+      <div className="w-full flex justify-center p-4 lg:p-7 min-h-screen">
         <div className=" w-full md:w-3/4 lg:w-2/3 xl:w-1/2">
           <h2 className="text-4xl font-semibold pb-2">Teachings</h2>
           {

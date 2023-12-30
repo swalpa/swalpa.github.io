@@ -9,7 +9,7 @@ const Page = async () => {
   if (!projects) return <Loading />
   return (
     <Suspense fallback={<Loading />}>
-      <main className="w-full flex flex-col items-center p-5 min-h-[85vh]">
+      <main className="w-full flex flex-col items-center p-5 min-h-screen">
         <h2 className="h2-heading w-full md:w-3/4 xl:w-3/5">Projects</h2>
         <div className="w-full md:w-4/5 xl:w-3/5 px-2">
           {

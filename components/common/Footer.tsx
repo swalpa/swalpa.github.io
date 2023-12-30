@@ -9,6 +9,7 @@ const Footer = () => {
     <div className='w-full flex flex-col gap-1 justify-center items-center bg-[#303438] text-gray-400 py-3 pt-5'>
       <div className='w-full flex flex-col gap-1 justify-center items-center bg-[#303438] text-gray-400 pb-3'>
         <p className="text-center text-sm">© 2024 Swalpa Kumar Roy. All Rights Reserved</p>
+        <div className="text-xs text-gray-400"><Link target="_blank" className="hover:underline" href={"https://swalpa-admin.vercel.app"}>Admin Panel</Link></div>
         <div className="text-xs text-gray-500">Built by <Link target="_blank" className="hover:underline" href={"https://www.linkedin.com/in/sarthakroy107/"}>Sarthak Roy</Link></div>
       </div>
       <div className="w-full flex flex-wrap gap-3 justify-center bg-[#303438] text-white/40">

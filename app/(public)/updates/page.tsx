@@ -8,7 +8,7 @@ const Page = async () => {
   return (
     <Suspense fallback={<Loading/>}>
       <div className='w-full flex justify-center p-5 min-h-[85vh]'>
-        <div className="w-full lg:w-3/5 h-96 overflow-auto">
+        <div className="w-full lg:w-2/3 xl:w-1/2">
           <h2 className="h2-heading">Updates</h2>
           <div className="w-full">
             {data.map((update: updateType, index: number) => (

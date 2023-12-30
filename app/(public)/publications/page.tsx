@@ -1,5 +1,4 @@
 import Loading from "@/components/common/Loading";
-import useFetchPublications from "@/services/hooks/useFetchPublications";
 import { getPublications } from "@/services/serverActions";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -9,7 +8,7 @@ const Page = async () => {
 
   return (
     <Suspense fallback={<Loading />}>
-      <main className="w-full flex flex-col items-center p-3 lg:p-5 min-h-[85vh]">
+      <main className="w-full flex flex-col items-center p-3 lg:p-5 min-h-screen">
         <div className="w-full md:w-3/4 lg:w-3/5">
           <h2 className="h2-heading mb-1 lg:my-3">Publications</h2>
           <div className="w-full">
