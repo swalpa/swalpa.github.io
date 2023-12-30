@@ -17,8 +17,8 @@ const nextConfig = {
   //     },
   //   },
   // },
-  // output: 'export',
-  // distDir: 'out', 
+  output: 'export',
+  distDir: 'out', 
   images: {
     remotePatterns: [
       {
