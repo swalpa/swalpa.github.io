@@ -8,7 +8,7 @@ const useFetchInternshipDetails = (): InternshipDetailsWithProfiles | null | fal
     (async ()=> {
       setInternshipDetails(null)
       try {
-        const { data } = await axios.get<InternshipDetailsWithProfiles>(`${process.env.NEXT_PUBLIC_API_URL}/internship/6554367889b517b7ec08e404`)
+        const { data } = await axios.get<InternshipDetailsWithProfiles>(`https://swalpa-backend.onrender.com/internship/6554367889b517b7ec08e404`)
         //console.log(data)
         setInternshipDetails(data)
       } catch (error) {
