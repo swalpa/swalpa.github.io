@@ -2,9 +2,10 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import Image from "next/image"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTrigger } from "@/components/ui/dialog"
 import Link from "next/link"
 import { LucideGlobe, LucideLinkedin } from "lucide-react"
+import { Metadata } from "next"
 
 const Page = () => {
   const [teamData, setTeamData] = useState <teamMemberType[] | null> (null)

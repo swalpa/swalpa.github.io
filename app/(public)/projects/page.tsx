@@ -1,8 +1,16 @@
 import Loading from "@/components/common/Loading";
 import { getProjects } from "@/services/serverActions";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
+
+
+export const metadata: Metadata = {
+  title: 'Projects | Dr. Swalpa Kumar Roy',
+  description: 'Projects of Dr. Swalpa Kumar Roy',
+  keywords: ['Swalpa', 'Swalpa Roy', 'Swalpa Kumar Roy', 'Dr. Swalpa Kumar Roy', 'JGEC', 'AGEMC', 'Machine Learning', 'Swalpa Google Scholar', "Swalapa Github"]
+}
 
 const Page = async () => {
   const projects = await getProjects();
