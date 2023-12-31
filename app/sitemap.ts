@@ -4,49 +4,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const link = "https://swalpa.github.io"
   return [
     {
-      url: link,
+      url: `https://swalpa.github.io/`,
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 1,
     },
     {
-      url: `${link}/`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
-    },
-    {
-      url: `${link}/updates`,
+      url: `https://swalpa.github.io/updates`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.6,
     },
     {
-      url: `${link}/achievements`,
+      url: `https://swalpa.github.io/achievements`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${link}/projects`,
+      url: `https://swalpa.github.io/projects`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
     },
     {
-      url: `${link}/publications`,
+      url: `https://swalpa.github.io/publications`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: `${link}/team`,
+      url: `https://swalpa.github.io/team`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.2,
     },
     {
-      url: `${link}/teaching`,
+      url: `https://swalpa.github.io/teaching`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.5,
