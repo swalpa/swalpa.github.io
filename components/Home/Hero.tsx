@@ -4,7 +4,7 @@ import { FaGraduationCap } from 'react-icons/fa'
 
 const Hero = () => {
   return (
-    <div className='mb-12 w-[90%] md:w-4/5 bg-white flex flex-col lg:flex-row text-black'>
+    <div className='mb-12 w-[90%] xl:w-4/5 bg-white flex flex-col lg:flex-row text-black'>
         <div className='w-full lg:w-1/3 flex flex-col items-center mt-16'>
             <Image
             src={'https://swalpa.github.io/img/SKR.jpeg'}
@@ -64,7 +64,7 @@ const Hero = () => {
                     <p className='lg:text-xl font-medium'>Ph.D in Computer Science and Engineering</p>
                   </div>
                   <div className='pl-7 lg:pl-10 '>
-                    <i className='opacity-60 text-sm text-center w-full'>University of Calcutta</i>
+                    <i className='opacity-60 text-sm text-center w-full'>University of Calcutta (Work done at ISI Kolkata)</i>
                   </div>
                 </div>
                 <div className='mb-2'>

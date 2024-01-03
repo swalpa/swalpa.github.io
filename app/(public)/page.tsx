@@ -10,9 +10,7 @@ export default function Home() {
       <main className="w-full flex flex-col justify-center items-center bg-white text-black">
         <Hero />
         <ProfessionalServices />
-        <Suspense fallback={<Loading />}>
-          <UpdatesAndStats />
-        </Suspense>
+        <UpdatesAndStats />
       </main>
     </Suspense>
   )

@@ -4,7 +4,7 @@ import { MdCardMembership } from 'react-icons/md'
 const ProfessionalServices = () => {
 
     return (
-        <div className=" w-[90%] md:4/5 lg:w-3/4 bg-white text-black mb-10">
+        <div className=" w-[90%] xl:w-4/5 bg-white text-black mb-10">
             <h2 className="h2-heading">Professional Services</h2>
             <div className="flex flex-col lg:flex-row px-2 gap-x-10">
                 <div className="w-full lg:w-1/3">
@@ -17,6 +17,8 @@ const ProfessionalServices = () => {
                         <li>CVIP 2019, 2020</li>
                         <li>Premi 2019</li>
                         <li>IEEE Tencon 2018</li>
+                        <li>CVMI 2023</li>
+                        <li>IGRASS 2023</li>
                     </ul>
                 </div>
                 <div className='w-full lg:w-2/3'>
@@ -34,6 +36,7 @@ const ProfessionalServices = () => {
                         <li>Signal Processing, Elsevier</li>
                         <li>Pattern Recognition Letters, Elsevie</li>
                         <li>IEEE Trans. on Cybernetics</li>
+                        <li>IEEE Trans. on NNLS</li>
                     </ul>
                 </div>
             </div>
@@ -44,10 +47,10 @@ const ProfessionalServices = () => {
                         <h3 className="text-xl lg:text-2xl">Professional Memberships</h3>
                     </div>
                     <ul className='list-disc pl-7 lg:pl-10 lg:text-lg'>
-                        <li> Computer Society of India (CSI), Life Member.</li>
-                        <li>The International Association for Pattern Recognition (IAPR), Life Member.</li>
-                        <li>The Institution of Engineers (India), Associate Member (AM3058193).</li>
-                        <li>The Institute of Electrical and Electronics Engineers (IEEE), Student Member (93837691).</li>
+                        <li>CSI, Life Member.</li>
+                        <li>The IAPR, Life Member (L-273).</li>
+                        <li>The IE India, Associate Member (AM3058193).</li>
+                        <li>IEEE, Member (98624682).</li>
                     </ul>
                 </div>
                 <div className='mt-7 w-full lg:w-2/3'>

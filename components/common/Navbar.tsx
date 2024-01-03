@@ -1,8 +1,7 @@
 "use client";
 import Link from 'next/link'
 import { usePathname } from 'next/navigation';
-import { RxHamburgerMenu } from 'react-icons/rx';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { LucideMenu, LucideX } from 'lucide-react';
 
 type Link = {
@@ -16,7 +15,7 @@ const links: Link[] = [
         href: '/'
     },
     {
-        name: 'Updates',
+        name: 'News',
         href: '/updates'
     },
     {
@@ -57,7 +56,7 @@ const Navbar = () => {
                             <Link onClick={()=> setOpen(false)} key={index} href={link.href} className={`${path === link.href || (path.includes('/teaching') && link.name === "Teaching") ? "font-bold" : ""}`}>
                                 <>
                                     <p>{link.name}</p>
-                                    <div className={`${path === link.href || (path.includes('/teaching') && link.name === "Teaching") ? "bg-black h-[0.15rem] mt-[0.15rem]" : ""}`}></div>
+                                    <div className={`${path === link.href || (path.includes('/teaching') && link.name === "Teaching") ? "bg-black h-[0.15rem] mt-[0.15rem]" : "h-[0.15rem] mt-[0.15rem]"}`}></div>
                                 </>
                             </Link>
                         ))

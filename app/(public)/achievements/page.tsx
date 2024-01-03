@@ -31,7 +31,7 @@ const Page = async () => {
                   }
                 </div>
                 <div>
-                  <h3 className="text-2xl font-semibold my-2 px-2">National recognitions</h3>
+                  <h3 className="text-2xl font-semibold mt-11 my-2 px-2">National recognitions</h3>
                   {
                     achievements.filter((obj) => obj.category === AchievementCategory.National).map((achievement, index) => (
                       <Achievement key={index} achievement={achievement} />

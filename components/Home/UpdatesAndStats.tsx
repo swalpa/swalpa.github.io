@@ -8,14 +8,14 @@ const UpdatesAndStats = () => {
 
   if (!data) return <Loading />
   return (
-    <div className="w-[90%] lg:w-3/4 flex flex-col-reverse lg:flex-row gap-x-10 pb-5">
-      <div className="w-full lg:w-3/5 h-96 overflow-hidden">
-        <h2 className="h2-heading">Updates</h2>
+    <div className="w-[90%] xl:w-3/4 flex flex-col-reverse lg:flex-row gap-x-10 pb-5">
+      <div className="w-full h-[30rem] overflow-hidden">
+        <h2 className="h2-heading">News</h2>
         <div className=" overflow-hidden">
           <div className="w-full animate-marquee overflow-hidden">
             {data && data.updates.map((update: updateType, index: number) => (
               <div key={index} className="flex gap-x-5 mx-4 border-b border-black/5 py-1">
-                <p className="text-blue-300 w-1/5">{update.date.toString().split("T")[0]}</p>
+                <p className="text-blue-300 text-xs md:text-base w-1/5 lg:w-[10%]">{update.date.toString().split("T")[0]}</p>
                 <div className="w-4/5" dangerouslySetInnerHTML={{ __html: update.title }} />
               </div>
             ))}
@@ -23,14 +23,14 @@ const UpdatesAndStats = () => {
           <div className="w-full animate-marquee overflow-hidden">
             {data && data.updates.map((update: updateType, index: number) => (
               <div key={index} className="flex gap-x-5 mx-4 border-b border-black/5 py-1">
-                <p className="text-blue-300 w-1/5">{update.date.toString().split("T")[0]}</p>
+                <p className="text-blue-300 text-xs md:text-base w-1/5 lg:w-[10%]">{update.date.toString().split("T")[0]}</p>
                 <div className="w-4/5" dangerouslySetInnerHTML={{ __html: update.title }} />
               </div>
             ))}
           </div>
         </div>
       </div>
-      <div className="w-full lg:w-2/5 h-96 overflow-auto">
+      {/* <div className="w-full lg:w-2/5 h-96 overflow-auto">
         <h2 className="h2-heading">Google Scholar stats</h2>
         <div className="flex flex-col items-center">
           <div className="flex gap-x-3 lg:gap-x-7 lg:text-lg font-medium mb-2 text-black/80 px-1 text-sm">
@@ -49,7 +49,7 @@ const UpdatesAndStats = () => {
           </div>
           <i className="text-black text-opacity-60 pl-5">Last updated on: {data.stats.updatedAt.toString().split('T')[0]}</i>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
