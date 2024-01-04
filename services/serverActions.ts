@@ -1,7 +1,6 @@
 import axios from "axios"
 
-const server = "https://swalpa-backend.onrender.com";
-console.log("FROM PROCESS.ENNEXT_PUBLIC_API_URL", process.env.NEXT_PUBLIC_API_URL)
+const server: string = process.env.NEXT_PUBLIC_API_URL as string;
 
 export const getUpdates = async () => {
     try {
