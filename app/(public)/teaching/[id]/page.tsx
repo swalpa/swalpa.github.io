@@ -4,8 +4,10 @@ import axios from "axios";
 import DOMPurify from "isomorphic-dompurify";
 import { Suspense } from "react";
 
+const server: string = process.env.NEXT_PUBLIC_API_URL!;
+
 export async function generateStaticParams() {
-  const { data } = await axios.get<{ _id: string}[]>(`https://swalpa-backend.onrender.com/teaching/ids`)
+  const { data } = await axios.get<{ _id: string}[]>(`${server}/teaching/ids`)
   if (!data) return [];
   return data.map((project) => ({
     id: project._id,

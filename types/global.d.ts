@@ -121,6 +121,7 @@ declare global {
         category: PublicationCategory,
         links: {name: string, link: string}[],
         publisher: string,
+        highlighted: boolean | null | undefined,
         serialNumber?: string,
         createdAt: Date,
     }

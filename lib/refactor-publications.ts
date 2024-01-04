@@ -16,5 +16,6 @@ export const refactorPublications = (publications: Publication[]) => {
             objs[index].publications.push(publication);
         }
     }
+    //console.log(objs);
     return objs;
 }

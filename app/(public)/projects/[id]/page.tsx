@@ -3,9 +3,10 @@ import { getProjects, getSpecificProject } from "@/services/serverActions"
 import axios from "axios";
 import Link from "next/link"
 import { Suspense } from "react"
+const server: string = process.env.NEXT_PUBLIC_API_URL!;
 
 export async function generateStaticParams() {
-  const { data } = await axios.get<ProjectType[]>(`https://swalpa-backend.onrender.com/projects`);
+  const { data } = await axios.get<ProjectType[]>(`${server}/projects`);
   if (!data) return [];
   return data.map((project) => ({
     id: project._id,
