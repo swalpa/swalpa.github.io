@@ -7,7 +7,7 @@ const Hero = () => {
     <div className='mb-12 w-[90%] xl:w-4/5 bg-white flex flex-col lg:flex-row text-black'>
         <div className='w-full lg:w-1/3 flex flex-col items-center mt-16'>
             <Image
-            src={'https://swalpa.github.io/img/SKR.jpeg'}
+            src={'https://swalpa.github.io/old-portfolio/img/SKR.jpeg'}
             width={150}
             height={150}
             alt="Picture of the author"

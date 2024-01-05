@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Dr. Swalpa Kumar Roy',
-  description: 'New website of Dr. Swalpa Kumar Roy',
+  description: 'Dr. Swalpa Kumar Roy, ',
   keywords: ['Swalpa', 'Swalpa Roy', 'Swalpa Kumar Roy', 'Dr. Swalpa Kumar Roy', 'JGEC', 'AGEMC', 'Machine Learning', 'Swalpa Google Scholar', "Swalapa Github"]
 }
 
