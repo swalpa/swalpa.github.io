@@ -34,11 +34,10 @@ const links: Link[] = [
         name: 'Publications',
         href: '/publications'
     },
-    //!Inportant design update has to be done
-    // {
-    //     name: 'Team', 
-    //     href: '/team'
-    // },
+    {
+        name: 'Team', 
+        href: '/team'
+    },
 ]
 
 const Navbar = () => {

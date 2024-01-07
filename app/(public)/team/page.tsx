@@ -1,58 +1,55 @@
-"use client"
-import axios from "axios"
-import { useEffect, useState } from "react"
-import Image from "next/image"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTrigger } from "@/components/ui/dialog"
-import Link from "next/link"
-import { LucideGlobe, LucideLinkedin } from "lucide-react"
-import { Metadata } from "next"
+import Loading from "@/components/common/Loading";
+import { getTeamMembers } from "@/services/serverActions"
 
-const Page = () => {
-  const [teamData, setTeamData] = useState <teamMemberType[] | null> (null)
 
-  useEffect(()=> {
-    (async ()=> {
-      const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/team`)
-      console.log(data)
-      setTeamData(data)
-    })()
-    return ()=> {
-      
-    }
-  }, [])
-  if(teamData === null || teamData === undefined) return (<main></main>)
+const Page = async () => {
+ const teamData = await getTeamMembers();
+
+  if (!teamData) return <Loading />
+
   return (
-    <main className="flex justify-center p-5">
-      <div className="w-3/5">
-        <h3 className="h2-heading">Students</h3>
-        <div className="grid xl:grid-cols-4 gap-5 px-2">
+    <main className="flex flex-col items-center py-5 p-2.5 lg:p-3 xl:p-5 min-h-screen">
+      <div className="w-[350px] md:w-[570px] lg:w-4/5 xl:w-3/4 lg:min-w-[980px] xl:min-w-[1250px]">
+        <h3 className="h2-heading">Mentors</h3>
+        <div className="grid grid-cols-2 md:md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-1.5 lg:gap-3 xl:gap-5 p-2 mb-4">
           {
-            teamData.filter((member)=> member.category === 'student').map((member: teamMemberType, index: number)=> (
-              <Dialog key={index}>
-                <DialogTrigger key={index} className="bg-[#fefffe] pt-4 pb-1 w-full hover:scale-105 hover:border hover:border-black/10  rounded-sm px-4 
-                  shadow-[5px_10px_30px_rgb(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:cursor-pointer duration-150 transition-all">
-                  <Image src={member.profileImage} alt={member.name} draggable={false} width={300} height={300} className="rounded-sm object-cover w-56 h-72"/>
-                  <p className="h-16 px-2 text-xl font-semibold">{member.name}</p>
-                </DialogTrigger>
-                <DialogContent className="w-1/3 flex">
-                  <Image src={member.profileImage} alt={member.name} draggable={false} width={300} height={300} className="rounded-sm object-cover w-40 h-56"/>
-                  <div className="flex flex-col justify-between">
-                    <div>
-                      <DialogHeader className="text-2xl font-semibold w-full">{member.name}</DialogHeader>
-                      <i className="text-lg opacity-75 w-full">{member.college}&lsquo;{member.graduationYear?.toString().slice(-2)}</i>
-                      <DialogDescription className="text-lg max-h-80 overflow-auto">{member.currentPosition}</DialogDescription>
-                    </div>
-                    <div>
-                      {
-                        member.linkedIn && (<Link href={member.linkedIn} target="_blank"><LucideLinkedin/></Link>)
-                      }
-                      {
-                        member.websiteLnk && (<Link href={member.websiteLnk} target="_blank"><LucideGlobe/></Link>)
-                      }
-                    </div>
-                  </div>
-                </DialogContent>
-              </Dialog>
+            teamData.filter((member) => member.category === 'mentor').map((member: teamMemberType, index: number) => (
+              <div key={index} className="bg-white p-1.5 lg:p-2.5 border border-black/10 rounded-sm">
+                <img loading="lazy" src={member.profileImage ? member.profileImage : "https://i.ibb.co/fYCYQQV/blank-profile-picture-973460-1280.png"} alt={member.name} draggable={false} width={300} height={300} 
+                  className="rounded-[3px] object-cover w-40 h-48 md:w-48 md:h-56" />
+                <p className="text-lg lg:text-xl font-semibold">{member.name}</p>
+                <p className="text-xs text-black text-opacity-30 font-medium pr-1">{member.college}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div className="w-[350px] md:w-[570px] lg:w-4/5 xl:w-3/4 lg:min-w-[980px] xl:min-w-[1250px]">
+        <h3 className="h2-heading">International Collaborators</h3>
+        <div className="grid grid-cols-2 md:md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-1.5 lg:gap-3 xl:gap-5 p-2 mb-4">
+          {
+            teamData.filter((member) => member.category === 'collaborator').map((member: teamMemberType, index: number) => (
+              <div key={index} className="bg-white p-1.5 lg:p-2.5 border border-black/10 rounded-sm">
+                <img loading="lazy" src={member.profileImage ? member.profileImage : "https://i.ibb.co/fYCYQQV/blank-profile-picture-973460-1280.png"} alt={member.name} draggable={false} width={300} height={300} 
+                  className="rounded-[3px] object-cover w-40 h-48 md:w-48 md:h-56" />
+                <p className="text-lg lg:text-xl font-semibold">{member.name}</p>
+                <p className="text-xs text-black text-opacity-30 font-medium pr-1">{member.college}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div className="w-[350px] md:w-[570px] lg:w-4/5 xl:w-3/4 lg:min-w-[980px] xl:min-w-[1250px]">
+        <h3 className="h2-heading">Students</h3>
+        <div className="grid grid-cols-2 md:md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-1.5 lg:gap-3 xl:gap-5 p-2 mb-4">
+          {
+            teamData.filter((member) => member.category === 'student').map((member: teamMemberType, index: number) => (
+              <div key={index} className="bg-white p-1.5 lg:p-2.5 border border-black/10 rounded-sm">
+                <img loading="lazy" src={member.profileImage ? member.profileImage : "https://i.ibb.co/fYCYQQV/blank-profile-picture-973460-1280.png"} alt={member.name} draggable={false} width={300} height={300} 
+                  className="rounded-[3px] object-cover w-40 h-48 md:w-48 md:h-56" />
+                <p className="text-lg lg:text-xl font-semibold">{member.name}</p>
+                <p className="text-xs text-black text-opacity-30 font-medium pr-1">{member.college}</p>
+              </div>
             ))
           }
         </div>

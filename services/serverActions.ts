@@ -85,7 +85,7 @@ export const getSpecificTeaching = async (id: string) => {
 
 export const getTeachingIds = async () => {
     try {
-        const { data } = await axios.get<{ _id: string}[]>(`${server}/teaching/ids`);
+        const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/team`)
         return data
     } catch (error) {
         console.log(error);
@@ -96,6 +96,16 @@ export const getTeachingIds = async () => {
 export const homePageUpdates = async () => {
     try {
         const { data } = await axios.get<UpdateAndGoogleScholarStats>(`${server}/updates/featured-updates-and-google-scholar-stats`);
+        return data
+    } catch (error) {
+        console.log(error);
+        return false
+    }
+}
+
+export const getTeamMembers = async () => {
+    try {
+        const { data } = await axios.get<teamMemberType[]>(`${server}/team`);
         return data
     } catch (error) {
         console.log(error);
