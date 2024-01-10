@@ -58,7 +58,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
           <div className="w-full h-[1px] bg-black/15 mt-5" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 px-3 text-base">
             {
-              project.PI && (
+              project.PI && project.PI.name && (
                 <div className="border border-black/40 rounded-lg p-4">
                   <div>{project.PI.name}</div>
                   <p className="my-1">{project.PI.designation}</p>
@@ -67,7 +67,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
               )
             }
             {
-              project.CoPI_1 && (
+              project.CoPI_1 && project.CoPI_1.name && (
                 <div className="border border-black/40 rounded-lg p-4">
                   <div>{project.CoPI_1.name}</div>
                   <p className="my-1">{project.CoPI_1.designation}</p>
@@ -76,7 +76,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
               )
             }
             {
-              project.CoPI_2 && (
+              project.CoPI_2 && project.CoPI_2.name && (
                 <div className="border border-black/40 rounded-lg p-4">
                   <div>{project.CoPI_2.name}</div>
                   <p className="my-1">{project.CoPI_2.designation}</p>
