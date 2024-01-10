@@ -1,7 +1,9 @@
 import Loading from "@/components/common/Loading"
-import { getProjects, getSpecificProject } from "@/services/serverActions"
+import { getSpecificProject } from "@/services/serverActions"
+import { ProjectCategory } from "@/types/enums.";
 import axios from "axios";
-import Link from "next/link"
+import DOMPurify from "isomorphic-dompurify";
+import Image from "next/image";
 import { Suspense } from "react"
 const server: string = process.env.NEXT_PUBLIC_API_URL!;
 
@@ -16,61 +18,81 @@ const Page = async ({ params }: { params: { id: string } }) => {
 
   const project = await getSpecificProject(params.id);
   if (!project) return <Loading />
+
   return (
     <Suspense fallback={<Loading />}>
-      <main className='w-full flex justify-center p-3 bg-[#f8fafc] min-h-[85vh]'>
-        <div className="w-full md:w-3/4 lg:w-3/4 xl:w-3/5 px-2 rounded-md flex flex-col gap-3 items-center">
-          <h2 className="w-full text-2xl md:text-3xl xl:text-4xl font-medium p-3 border-b border-black/10">{project.title}</h2>
-          <div className="flex flex-wrap gap-x-2 w-full px-5">
+      <div className="w-full flex justify-center bg-slate-50 p-2 md:p-5 min-h-[85vh] text-black/80 ">
+        <div className="w-full md:w-4/5 lg:w-3/4 lg:min-w-[850px] xl:w-3/5 xl:min-w-[1000px]  bg-white border border-black/10 min-h-screen 
+          rounded-sm p-2 lg:p-6 px-4 lg:px-10 lg:text-lg shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]">
+          <h2 className="w-full h2-heading text-xl md:text-2xl lg:text-4xl font-semibold md:p-2">{project.title}</h2>
+          <Image src={project.image} width={500} height={500} alt="image" className="w-full h-56 md:h-72 lg:h-96 object-contain rounded-sm" />
+          <div>
+            <p className="text-2xl font-semibold mt-3 mb-1">Description</p>
+            <p className="text-justify px-2 text-sm md:text-base text-black text-opacity-75" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(project.description) }} />
+          </div>
+          <div>
             {
-              project.links.map((link, index) => (
-                <Link target="_blank" href={link.value} key={index}
-                  className="p-1 px-1 border border-black/50 rounded-sm hover:bg-black/80 hover:text-white transition">{link.name}</Link>
-              ))
+              project.informations && project.informations.length > 0 && (
+                <>
+                  <h3 className='text-2xl font-semibold mt-3'>Details</h3>
+                  <table className='w-full text-sm lg:text-base lg:w-full lg:ml-3'>
+                    <tbody>
+                      <tr className='border-b border-black'>
+                        <th className='p-2 my-2'>Details</th>
+                        <th className='p-2 border-l border-black'>Description</th>
+                      </tr>
+                      {
+                        project.informations.map((inf, index) => (
+                          <tr key={index} className={`${index % 2 == 0 ? "" : "bg-[#e4e4e4]"}`}>
+                            <td className='p-2'>{inf.name}</td>
+                            <td className='p-2 border-l border-black'>{inf.value}</td>
+                          </tr>
+                        ))
+                      }
+                    </tbody>
+                  </table>
+                </>
+              )
             }
           </div>
-          {
-            project.image && <img src={project.image} width={250} height={250} alt="image" className="w-full h-44 md:h-56 lg:h-72 xl:h-96 object-fit rounded-md px-5" />
-          }
-          <div className="px-3 w-full">
-            <h3 className="text-3xl font-medium mt-6 my-2">Description</h3>
-            <p className="lg:text-lg text-justify px-1 text-black/80 tracking-tighter space-y-0">{project.description}</p>
+          <div className="w-full h-[1px] bg-black/15 mt-5" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 px-3 text-base">
+            {
+              project.PI && (
+                <div className="border border-black/40 rounded-lg p-4">
+                  <div>{project.PI.name}</div>
+                  <p className="my-1">{project.PI.designation}</p>
+                  <p className="font-semibold">Principal Investigator</p>
+                </div>
+              )
+            }
+            {
+              project.CoPI_1 && (
+                <div className="border border-black/40 rounded-lg p-4">
+                  <div>{project.CoPI_1.name}</div>
+                  <p className="my-1">{project.CoPI_1.designation}</p>
+                  <p className="font-semibold">Principal Investigator</p>
+                </div>
+              )
+            }
+            {
+              project.CoPI_2 && (
+                <div className="border border-black/40 rounded-lg p-4">
+                  <div>{project.CoPI_2.name}</div>
+                  <p className="my-1">{project.CoPI_2.designation}</p>
+                  <p className="font-semibold">Principal Investigator</p>
+                </div>
+              )
+            }
           </div>
-          {
-            project.collaborators && (
-              <i className="px-2 md:px-3 py-1 w-full flex gap-x-2 items-center">
-                <h3 className="text-base lg:text-xl font-medium">Principal investigators: </h3>
-                <p className="ltext-base g:text-lg text-justify px-1 text-black/80">{project.collaborators}</p>
-              </i>
-            )
-          }
-          {
-            project.informations.length > 0 && (
-              <div className="mb-5 px-3 w-full">
-                <h3 className="text-3xl mt-4 mb-3 font-medium">Details</h3>
-                <table className="w-full mt-2 px text-base lg:text-lg">
-                  <tbody>
-                    <tr className="border-b border-black/50">
-                      <th className="border-r border-black/50">Point</th>
-                      <th>Description</th>
-                    </tr>
-                  </tbody>
-                  <tbody>
-                    {
-                      project.informations.map((info, index) => (
-                        <tr key={index} className={`p-1 ${index % 2 == 1 ? "bg-slate-200" : null}`}>
-                          <td className="border-r border-black/50 p-1 text-black">{info.name}</td>
-                          <td className="p-1 text-black/75">{info.value}</td>
-                        </tr>
-                      ))
-                    }
-                  </tbody>
-                </table>
-              </div>
-            )
-          }
+          <div className="w-full h-[1px] bg-black/20 mt-5" />
+          <div className="w-full p-2 flex justify-center pb-3">
+            {project.category === ProjectCategory.CG && <img src="https://i.ibb.co/7g48NnK/Science-and-Engineering-Research-Board.png" alt="SERB Image" className="h-56 object-contain" />}
+            {project.category === ProjectCategory.ISRO && <img src="https://i.ibb.co/1Gp83zZ/1200px-Indian-Space-Research-Organisation-Logo-svg.png" alt="ISRO image" className="h-56 object-contain" />}
+            {project.category === ProjectCategory.WBDST && <img src="https://i.ibb.co/BfVHpCc/Emblem-of-West-Bengal-01.png" alt="WB-DST image" className="h-56 object-contain" />}
+          </div>
         </div>
-      </main>
+      </div>
     </Suspense>
   )
 }

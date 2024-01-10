@@ -1,5 +1,5 @@
 import { Profile } from "next-auth";
-import { TeamMemberCategory, ProfileCategory, PublicationCategory, AchievementCategory } from "./enums.";
+import { TeamMemberCategory, ProfileCategory, PublicationCategory, AchievementCategory, ProjectCategory } from "./enums.";
 import { type } from "os";
 
 export {}
@@ -142,14 +142,21 @@ declare global {
         statement: string,
         category: AchievementCategory,
     }
+    type PI_Type = {
+        name: string,
+        designation: string,
+    }
 
     type ProjectType = {
         _id: string,
         title: string,
-        collaborators: string;
+        PI: PI_Type | null | undefined,
+        CoPI_1: PI_Type | null | undefined,
+        CoPI_2: PI_Type | null | undefined,
         description: string,
         image: string,
-        links: {name: string, value: string}[],
+        links: { name: string, value: string }[],
         informations: { name: string, value: string }[],
+        category: ProjectCategory
     }
 }

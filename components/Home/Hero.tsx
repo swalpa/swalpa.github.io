@@ -21,12 +21,24 @@ const Hero = () => {
               <p className="flex gap-1"><LucideMail className="text-sm px-1" />swalpa@ieee.org</p>
             </div> */}
             <div className='flex gap-x-4 items-center justify-center mt-4'>
-                <a href="https://scholar.google.com/citations?user=1WVrFGwAAAAJ&hl=en" title='Google Scholar' target='_blank' className='text-4xl hover:text-blue-400 transition'><SiGooglescholar title='Google Scholar'/></a>
-                <a href="https://dblp.org/pid/166/4544.html" title='DBLP' target='_blank' className='text-4xl hover:text-blue-400 transition'><SiDblp title='DBLP'/></a>
-                <a href="https://www.researchgate.net/profile/Swalpa-Roy" title='Research Gate' target='_blank' className='text-4xl hover:text-blue-400 transition'><SiResearchgate title='Research Gate'/></a>
-                <a href="https://loop.frontiersin.org/people/2122815/overview" title='Loop' target='_blank' className='text-4xl hover:text-blue-400 transition'><SiLoop title='Loop'/></a>
-                <a href="https://www.webofscience.com/wos/author/record/2068252" title='Web of Science' target='_blank' className='text-4xl hover:text-blue-400 transition'><SiClarivate title='Web of Science'/></a>
-                <a href="https://www.scopus.com/authid/detail.uri?authorId=56784776500" title='Scopus' target='_blank' className='text-4xl hover:text-blue-400 transition'><SiScopus title='Scopus'/></a>
+                <a href="https://scholar.google.com/citations?user=1WVrFGwAAAAJ&hl=en" title='Google Scholar' target='_blank' className='text-4xl hover:text-blue-400 transition'>
+                  <img src="https://i.ibb.co/FK8Xwbx/512px-Google-Scholar-logo-svg.png" alt="Google Scholar" title='Google Scholar' className='w-9 h-9' />
+                </a>
+                <a href="https://dblp.org/pid/166/4544.html" title='DBLP' target='_blank' className='text-4xl hover:text-blue-400 transition'>
+                  <img src='https://i.ibb.co/fnFcchK/dblp-icon-192x192.png' alt='DBLP' title='DBLP' className='w-9 h-9'/>
+                </a>
+                <a href="https://www.researchgate.net/profile/Swalpa-Roy" title='Research Gate' target='_blank' className='text-4xl hover:text-blue-400 transition'>
+                  <img src='https://i.ibb.co/p4hbxD4/RG.png' alt='Research Gate' title='Research Gate' className='w-9 h-9'/>
+                </a>
+                <a href="https://loop.frontiersin.org/people/2122815/overview" title='Loop' target='_blank' className='text-4xl hover:text-blue-400 transition'>
+                  <img src='https://i.ibb.co/3SMKJFq/looplogo-thumb.png' alt='Loop' className='w-11 h-9 object-cover' title='Loop'/>
+                </a>
+                <a href="https://www.webofscience.com/wos/author/record/2068252" title='Web of Science' target='_blank' className='text-4xl hover:text-blue-400 transition'>
+                  <img src='https://i.ibb.co/5vhpcNR/l-Oi-Mq-L4-UN4910-Sl-Rv1s-SYUKCAhc6j4j-JIhk-Vd-RX-k-Ceoi-OSYpi35m-Ya-Xch-XLNNGb-RBAq-Iah-D-s900-c-k.jpg' alt='Web of Science' title='Web of Science' className='w-9 h-9'/>
+                </a>
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=56784776500" title='Scopus' target='_blank' className='text-4xl hover:text-blue-400 transition'>
+                  <img src='https://i.ibb.co/zHwhLHm/elsevier-scopus.png' alt='Scopus' title='Scopus' className='w-9 h-9'/>
+                </a>
             </div>
         </div>
         <div className='w-full lg:w-2/3 h-full'>

@@ -77,7 +77,7 @@ const Page = async () => {
                                 ))
                               }
                             </div>
-                            {publication.highlighted && <section className="hidden lg:block animate-pulse text-red-600 text-xs min-w-[170px]">ESI Highly Cited Paper</section>}
+                            {publication.highlighted && <section className="hidden lg:block animate-pulse text-red-800 text-sm font-semibold min-w-[170px]">ESI Highly Cited Paper</section>}
                           </div>
                         </div>
                       ))}

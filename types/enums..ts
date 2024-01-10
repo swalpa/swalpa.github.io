@@ -5,23 +5,23 @@ export enum TeamMemberCategory {
 }
 
 export enum TeachingArrayFields {
-    Routine =                   "routine",
-    CourseObjectives =          "courseObjectives",
-    programmeObjectives =       "programmeObjectives",
-    TeachingLearningProccess =  "teachingLearningProccess",
-    Syllabus =                  "syllabus",
-    ReferenceBooks =            "referenceBooks",
-    Prerequisites =             "prerequisites",
-    GradingPolicy =             "gradingPolicy",
-    OtherResources =            "otherResources",
-    Miscellaneous =             "miscellaneous",
+    Routine = "routine",
+    CourseObjectives = "courseObjectives",
+    programmeObjectives = "programmeObjectives",
+    TeachingLearningProccess = "teachingLearningProccess",
+    Syllabus = "syllabus",
+    ReferenceBooks = "referenceBooks",
+    Prerequisites = "prerequisites",
+    GradingPolicy = "gradingPolicy",
+    OtherResources = "otherResources",
+    Miscellaneous = "miscellaneous",
 }
 
 export enum InternshipArrayFields {
-    MinimumQualification =    "minimumQualification",
-    PreferredQualification =  "preferredQualification",
-    Prerequisites =           "prerequisites",
-    Responsibilities =        "responsibilities",
+    MinimumQualification = "minimumQualification",
+    PreferredQualification = "preferredQualification",
+    Prerequisites = "prerequisites",
+    Responsibilities = "responsibilities",
 }
 
 export enum ProfileCategory {
@@ -42,4 +42,10 @@ export enum PublicationCategory {
 export enum AchievementCategory {
     International = 'International',
     National = 'National',
+}
+
+export enum ProjectCategory {
+    CG = 'CG',
+    ISRO = 'ISRO',
+    WBDST = 'WBDST',
 }
