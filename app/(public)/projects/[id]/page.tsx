@@ -35,15 +35,15 @@ const Page = async ({ params }: { params: { id: string } }) => {
               project.informations && project.informations.length > 0 && (
                 <>
                   <h3 className='text-2xl font-semibold mt-3'>Details</h3>
-                  <table className='w-full text-sm lg:text-base lg:w-full lg:ml-3'>
+                  <table className='w-full text-sm lg:text-base lg:w-full lg:ml-3 mt-3 md:mt-5'>
                     <tbody>
-                      <tr className='border-b border-black'>
+                      {/* <tr className='border-b border-black'>
                         <th className='p-2 my-2'>Details</th>
                         <th className='p-2 border-l border-black'>Description</th>
-                      </tr>
+                      </tr> */}
                       {
                         project.informations.map((inf, index) => (
-                          <tr key={index} className={`${index % 2 == 0 ? "" : "bg-[#e4e4e4]"}`}>
+                          <tr key={index} className={`${index % 2 == 0 ? "bg-[#e4e4e4]" : ""}`}>
                             <td className='p-2'>{inf.name}</td>
                             <td className='p-2 border-l border-black'>{inf.value}</td>
                           </tr>
@@ -56,10 +56,10 @@ const Page = async ({ params }: { params: { id: string } }) => {
             }
           </div>
           <div className="w-full h-[1px] bg-black/15 mt-5" />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 px-3 text-base">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-5 px-3 text-base">
             {
               project.PI && project.PI.name && (
-                <div className="border border-black/40 rounded-lg p-4">
+                <div className="border border-black/40 rounded-lg p-4 flex flex-col items-center">
                   <div>{project.PI.name}</div>
                   <p className="my-1">{project.PI.designation}</p>
                   <p className="font-semibold">Principal Investigator</p>
@@ -68,7 +68,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             }
             {
               project.CoPI_1 && project.CoPI_1.name && (
-                <div className="border border-black/40 rounded-lg p-4">
+                <div className="border border-black/40 rounded-lg p-4 flex-col items-center">
                   <div>{project.CoPI_1.name}</div>
                   <p className="my-1">{project.CoPI_1.designation}</p>
                   <p className="font-semibold">Principal Investigator</p>
@@ -77,7 +77,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             }
             {
               project.CoPI_2 && project.CoPI_2.name && (
-                <div className="border border-black/40 rounded-lg p-4">
+                <div className="border border-black/40 rounded-lg p-4 flex-col items-center">
                   <div>{project.CoPI_2.name}</div>
                   <p className="my-1">{project.CoPI_2.designation}</p>
                   <p className="font-semibold">Principal Investigator</p>
@@ -86,6 +86,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             }
           </div>
           <div className="w-full h-[1px] bg-black/20 mt-5" />
+          <p className="uppercase text-center my-2 font-medium">Sponsored by</p>
           <div className="w-full p-2 flex justify-center pb-3">
             {project.category === ProjectCategory.CG && <img src="https://i.ibb.co/7g48NnK/Science-and-Engineering-Research-Board.png" alt="SERB Image" className="h-56 object-contain" />}
             {project.category === ProjectCategory.ISRO && <img src="https://i.ibb.co/1Gp83zZ/1200px-Indian-Space-Research-Organisation-Logo-svg.png" alt="ISRO image" className="h-56 object-contain" />}
