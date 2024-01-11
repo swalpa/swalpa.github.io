@@ -24,7 +24,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
       <div className="w-full flex justify-center bg-slate-50 p-2 md:p-5 min-h-[85vh] text-black/80 ">
         <div className="w-full md:w-4/5 lg:w-3/4 lg:min-w-[850px] xl:w-3/5 xl:min-w-[1000px]  bg-white border border-black/10 min-h-screen 
           rounded-sm p-2 lg:p-6 px-4 lg:px-10 lg:text-lg shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]">
-          <h2 className="w-full h2-heading text-xl md:text-2xl lg:text-4xl font-semibold md:p-2">{project.title}</h2>
+          <h2 className="w-full h2-heading text-xl md:text-2xl lg:text-4xl font-semibold md:p-2" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(project.title) } } />
           <Image src={project.image} width={500} height={500} alt="image" className="w-full h-56 md:h-72 lg:h-96 object-contain rounded-sm" />
           <div>
             <p className="text-2xl font-semibold mt-3 mb-1">Description</p>
