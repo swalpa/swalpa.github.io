@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 import { Suspense } from 'react';
 
 export const metadata: Metadata = {
-  title: 'Updates | Dr. Swalpa Kumar Roy',
+  title: 'Updates | Swalpa Kumar Roy',
   description: 'Updates about Dr. Swalpa Kumar Roy',
   keywords: ['Swalpa', 'Swalpa Roy', 'Swalpa Kumar Roy', 'Dr. Swalpa Kumar Roy', 'JGEC', 'AGEMC', 'Machine Learning', 'Swalpa Google Scholar', "Swalapa Github", "Updates", "News", "Events"]
 }

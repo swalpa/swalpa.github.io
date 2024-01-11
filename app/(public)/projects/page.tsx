@@ -6,7 +6,7 @@ import Link from "next/link";
 
 
 export const metadata: Metadata = {
-  title: 'Projects | Dr. Swalpa Kumar Roy',
+  title: 'Projects | Swalpa Kumar Roy',
   description: 'Projects of Dr. Swalpa Kumar Roy',
   keywords: ['Swalpa', 'Swalpa Roy', 'Swalpa Kumar Roy', 'Dr. Swalpa Kumar Roy', 'JGEC', 'AGEMC', 'Machine Learning', 'Swalpa Google Scholar', "Swalapa Github"]
 }

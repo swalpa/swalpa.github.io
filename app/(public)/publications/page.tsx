@@ -9,7 +9,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: 'Publications | Dr. Swalpa Kumar Roy',
+  title: 'Publications | Swalpa Kumar Roy',
   description: 'Publications of Dr. Swalpa Kumar Roy',
   keywords: ['Swalpa', 'Swalpa Roy', 'Swalpa Kumar Roy', 'Dr. Swalpa Kumar Roy', 'JGEC', 'AGEMC', 'Machine Learning', 'Swalpa Google Scholar', "Swalapa Github", "Gernal Publications", "Research Publications"]
 }
