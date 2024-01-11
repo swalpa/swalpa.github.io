@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="text-xs text-gray-400"><Link target="_blank" className="hover:underline" href={"https://swalpa-admin.vercel.app"}>Admin Panel</Link></div>
         <div className="text-xs text-gray-500">Designed by <Link target="_blank" className="hover:underline" href={"https://www.linkedin.com/in/sarthakroy107/"}>Sarthak Roy</Link></div>
       </div>
-      <div className="w-full flex flex-wrap gap-3 justify-center bg-[#303438] text-white/40">
+      <div className="w-full flex md:text-lg flex-wrap gap-3 justify-center bg-[#303438] text-white/40">
         <div className="flex gap-1 w-56">
           <div className="w-[20px] h-[20px]"><LucidePhone className="text-sm px-1" /></div>(+91)-9749322213
         </div>
