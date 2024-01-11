@@ -43,7 +43,7 @@ const Page = async () => {
             </div>
           ))
         }
-        <p className="h2-heading text-base border-black/15 lg:text-lg mt-2 md:mt-2">Science and Engineering Research Board (SERB) Funded</p>
+        <p className="h2-heading text-base border-black/15 lg:text-lg mt-2 md:mt-2">West Bengal  Department of Science & Technology (WB-DST) Funded</p>
         {
           projects.filter(obj => obj.category === ProjectCategory.WBDST).map((project, index) => (
             <div key={index} className="w-full min-w-2 p-1 flex gap-2 px-2 text-base lg:text-lg font-medium text-black text-opacity-75">

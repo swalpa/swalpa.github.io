@@ -47,7 +47,7 @@ const Navbar = () => {
 
     return (
         <main className='w-full h-12 bg-white drop-shadow-md text-black flex justify-around items-center sticky top-0 z-10'>
-            <Link href={'https://swalpa.github.io'} className='font-semibold text-2xl'>SWALPA KUMAR ROY</Link>
+            <Link href={'https://swalpa.github.io'} className='font-semibold text-2xl'>SWALPA KUMAR ROY, Ph.D.</Link>
             <div className='flex flex-col-reverse'>
                 <div className={`${open ? "flex flex-col left-0 top-12" : "hidden lg:flex"} bg-white w-full items-center gap-2 lg:gap-4 absolute lg:relative p-2`}>
                     {
