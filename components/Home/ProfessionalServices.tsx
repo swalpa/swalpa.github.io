@@ -61,8 +61,8 @@ const ProfessionalServices = () => {
                     <ul className='list-disc pl-7 lg:pl-10 lg:text-lg'>
                         <li> <b>Guest Editor</b> of special issued journal of Deep Learning for Predictive Modeling in Large-Scale Systems in MDPI.</li>
                         <li><b>Topic Editor</b> of the journal of Advanced Machine Learning Techniques for Remote Sensing Intelligent Interpretation in Frontiers in Remote Sensing.</li>
-                        <li><b>Associate Editor</b> of journal of Springer Nature Computer Science (SNCS).</li>
-                        <li><b>Advisory Member</b> in Amygdala AI an open non-profit platform for cutting edge AI research to solve real-life computer vision challenges.</li>
+                        <li><b>Associate Editor</b> of journal of <a target='_blank' className='text-blue-500 hover:underline' href="https://link.springer.com/journal/42979/editors">Springer Nature Computer Science</a> (SNCS).</li>
+                        <li><b>Advisory Member</b> in <a target='_blank' className='text-blue-500 hover:underline' href="https://www.amygdalaai.org/">Amygdala AI</a> an open non-profit platform for cutting edge AI research to solve real-life computer vision challenges.</li>
                     </ul>
                 </div>
             </div>
