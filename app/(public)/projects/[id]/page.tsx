@@ -60,7 +60,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             {
               project.PI && project.PI.name && (
                 <div className="border border-black/40 rounded-lg p-4 flex flex-col items-center">
-                  <div>{project.PI.name}</div>
+                  <p className="my-1 text-center" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(project.PI.designation)}} />
                   <p className="my-1">{project.PI.designation}</p>
                   <p className="font-semibold">Principal Investigator</p>
                 </div>
@@ -70,7 +70,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
               project.CoPI_1 && project.CoPI_1.name && (
                 <div className="border border-black/40 rounded-lg p-4 flex flex-col items-center">
                   <div>{project.CoPI_1.name}</div>
-                  <p className="my-1">{project.CoPI_1.designation}</p>
+                  <p className="my-1 text-center" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(project.CoPI_1.designation)}} />
                   <p className="font-semibold">Co-Principal Investigator I</p>
                 </div>
               )
@@ -79,7 +79,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
               project.CoPI_2 && project.CoPI_2.name && (
                 <div className="border border-black/40 rounded-lg p-4 flex flex-col items-center">
                   <div>{project.CoPI_2.name}</div>
-                  <p className="my-1">{project.CoPI_2.designation}</p>
+                  <p className="my-1 text-center" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(project.CoPI_2.designation)}} />
                   <p className="font-semibold">Co-Principal Investigator II</p>
                 </div>
               )
