@@ -60,8 +60,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
             {
               project.PI && project.PI.name && (
                 <div className="border border-black/40 rounded-lg p-4 flex flex-col items-center">
+                  <div>{project.PI.name}</div>
                   <p className="my-1 text-center" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(project.PI.designation)}} />
-                  <p className="my-1">{project.PI.designation}</p>
                   <p className="font-semibold">Principal Investigator</p>
                 </div>
               )
