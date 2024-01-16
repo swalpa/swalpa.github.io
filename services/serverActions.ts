@@ -65,7 +65,8 @@ export const getProjects = async () => {
 
 export const getSpecificProject = async (id: string) => {
     try {
-        const { data } = await axios.get<ProjectType>(`${server}/projects/${id}`);
+        const { data } = await axios.get<{project: ProjectType, publications: Publication[]}>(`${server}/projects/${id}`);
+        console.log(data)
         return data
     } catch (error) {
         console.log(error);

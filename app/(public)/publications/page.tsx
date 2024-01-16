@@ -16,6 +16,7 @@ export const metadata: Metadata = {
 
 const Page = async () => {
   const data = await getPublications();
+  console.log(data)
   if (!data) return null;
   const publications = refactorPublications(data);
   
