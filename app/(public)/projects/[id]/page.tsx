@@ -40,10 +40,6 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   <h3 className='text-2xl font-semibold mt-3'>Details</h3>
                   <table className='w-full text-sm lg:text-base lg:w-full lg:ml-3 mt-3 md:mt-5'>
                     <tbody>
-                      {/* <tr className='border-b border-black'>
-                        <th className='p-2 my-2'>Details</th>
-                        <th className='p-2 border-l border-black'>Description</th>
-                      </tr> */}
                       {
                         data.project.informations.map((inf, index) => (
                           <tr key={index} className={`${index % 2 == 0 ? "bg-[#e4e4e4]" : ""}`}>
@@ -64,7 +60,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             <ul className="list-disc pl-4 md:pl-5 lg:pl-6 text-sm md:text-base">
               {
                 data.publications.map((pub, index) => (
-                  <li key={index}><Link className="hover:text-blue-500 hover:underline" href={`/publications`}>{pub.title}</Link></li>
+                  <li key={index} className="my-3 md:my-4 lg:my-5 text-black text-opacity-80"><div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(pub.title+ '. ' + pub.authors + '. ' + pub.publisher + ". " + (pub.paperLink &&`<a class='text-blue-500 hover:underline' target='_blank' href=${pub.paperLink} >Link</a>`))}} /> </li>
                 ))
               }
             </ul>
@@ -74,8 +70,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
             {
               data.project.PI && data.project.PI.name && (
                 <div className="border border-black/40 rounded-lg p-4 flex flex-col items-center">
-                  <div>{data.project.PI.name}</div>
-                  <p className="my-1 text-center" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data.project.PI.designation) }} />
+                  <div className="font-medium">{data.project.PI.name}</div>
+                  <p className="my-1 text-center text-black text-opacity-60" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data.project.PI.designation) }} />
                   <p className="font-semibold">Principal Investigator</p>
                 </div>
               )
@@ -83,8 +79,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
             {
               data.project.CoPI_1 && data.project.CoPI_1.name && (
                 <div className="border border-black/40 rounded-lg p-4 flex flex-col items-center">
-                  <div>{data.project.CoPI_1.name}</div>
-                  <p className="my-1 text-center" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data.project.CoPI_1.designation) }} />
+                  <div className="font-medium">{data.project.CoPI_1.name}</div>
+                  <p className="my-1 text-center text-black text-opacity-60" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data.project.CoPI_1.designation) }} />
                   <p className="font-semibold">Co-Principal Investigator {data.project.CoPI_2 && 'I'}</p>
                 </div>
               )
@@ -92,8 +88,8 @@ const Page = async ({ params }: { params: { id: string } }) => {
             {
               data.project.CoPI_2 && data.project.CoPI_2.name && (
                 <div className="border border-black/40 rounded-lg p-4 flex flex-col items-center">
-                  <div>{data.project.CoPI_2.name}</div>
-                  <p className="my-1 text-center" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data.project.CoPI_2.designation) }} />
+                  <div className="font-medium">{data.project.CoPI_2.name}</div>
+                  <p className="my-1 text-center text-black text-opacity-60" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(data.project.CoPI_2.designation) }} />
                   <p className="font-semibold">Co-Principal Investigator II</p>
                 </div>
               )

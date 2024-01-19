@@ -19,9 +19,9 @@ const Footer = () => {
         <div className="flex gap-1 w-56">
           <div className="w-[20px] h-[20px]"><LucideMail className="text-sm px-1" /></div>swalpa@agemc.ac.in
         </div>
-        {/* <div className="flex gap-1 w-56">
-          <div className="w-[20px] h-[20px]"><LucideMail className="text-sm px-1" /></div>swalpa@ai.agemc.ac.in
-        </div> */}
+        <div className="flex gap-1 w-56">
+          <div className="w-[20px] h-[20px]"><LucideMail className="text-sm px-1" /></div>swalpa@cse.jgec.ac.in
+        </div>
         <div className="flex gap-1 w-56">
           <div className="w-[20px] h-[20px]"><LucideMail className="text-sm px-1" /></div>swalpa-cs@ieee.org
         </div>
