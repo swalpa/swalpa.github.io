@@ -8,8 +8,6 @@ import Link from "next/link";
 const Page = async () => {
   const teamData = await getTeamMembers();
 
-  console.log(teamData)
-
   if (!teamData) return <Loading />
 
   return (
@@ -34,7 +32,7 @@ const Page = async () => {
                   <div>
                     <p className="text-xl lg:text-2xl font-semibold">{member.name}</p>
                     <p className="text-sm text-black text-opacity-30 font-medium mt-1 mb-2 pr-1">{member.college}</p>
-                    <div>
+                    <div className="flex gap-x-3">
                       {
                         member.linkedIn && (
                           <Link href={member.linkedIn} target="_blank" ><LucideLinkedin className="text-gray-700 mt-1" /></Link>
@@ -73,7 +71,7 @@ const Page = async () => {
                   <div>
                     <p className="text-xl lg:text-2xl font-semibold">{member.name}</p>
                     <p className="text-sm text-black text-opacity-30 font-medium mt-1 mb-2 pr-1">{member.college}</p>
-                    <div>
+                    <div className="flex gap-x-3">
                       {
                         member.linkedIn && (
                           <Link href={member.linkedIn} target="_blank" ><LucideLinkedin className="text-gray-700 mt-1" /></Link>
@@ -112,7 +110,7 @@ const Page = async () => {
                   <div>
                     <p className="text-xl lg:text-2xl font-semibold">{member.name}</p>
                     <p className="text-sm text-black text-opacity-30 font-medium mt-1 mb-2 pr-1">{member.college}</p>
-                    <div>
+                    <div className="flex gap-x-3">
                       {
                         member.linkedIn && (
                           <Link href={member.linkedIn} target="_blank" ><LucideLinkedin className="text-gray-700 mt-1" /></Link>
@@ -151,7 +149,7 @@ const Page = async () => {
                   <div>
                     <p className="text-xl lg:text-2xl font-semibold">{member.name}</p>
                     <p className="text-sm text-black text-opacity-30 font-medium mt-1 mb-2 pr-1">{member.college}</p>
-                    <div>
+                    <div className="flex gap-x-3">
                       {
                         member.linkedIn && (
                           <Link href={member.linkedIn} target="_blank" ><LucideLinkedin className="text-gray-700 mt-1" /></Link>
