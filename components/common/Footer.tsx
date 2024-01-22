@@ -13,19 +13,19 @@ const Footer = () => {
         <div className="text-xs text-gray-500">Designed by <Link target="_blank" className="hover:underline" href={"https://www.linkedin.com/in/sarthakroy107/"}>Sarthak Roy</Link></div>
       </div>
       <div className="w-full flex md:text-lg flex-wrap gap-3 justify-center bg-[#303438] text-white/40">
-        <div className="flex gap-1 w-56">
+        <div className="flex gap-1 w-56 items-center">
           <div className="w-[20px] h-[20px]"><LucidePhone className="text-sm px-1" /></div>(+91)-9749322213
         </div>
-        <div className="flex gap-1 w-56">
+        <div className="flex gap-1 w-56 items-center">
           <div className="w-[20px] h-[20px]"><LucideMail className="text-sm px-1" /></div>swalpa@agemc.ac.in
         </div>
-        <div className="flex gap-1 w-56">
+        <div className="flex gap-1 w-56 items-center">
           <div className="w-[20px] h-[20px]"><LucideMail className="text-sm px-1" /></div>swalpa@cse.jgec.ac.in
         </div>
-        <div className="flex gap-1 w-56">
+        <div className="flex gap-1 w-56 items-center">
           <div className="w-[20px] h-[20px]"><LucideMail className="text-sm px-1" /></div>swalpa-cs@ieee.org
         </div>
-        <div className="flex gap-1 w-56">
+        <div className="flex gap-1 w-56 items-center">
           <div className="w-[20px] h-[20px]"><LucideMail className="text-sm px-1" /></div>swalpa@students.iiests.ac.in
         </div>
       </div>

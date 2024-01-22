@@ -10,7 +10,7 @@ const server: string = process.env.NEXT_PUBLIC_API_URL!;
 
 export async function generateStaticParams() {
   const { data } = await axios.get<ProjectType[]>(`${server}/projects`);
-  console.log(data)
+  
   if (!data) return [];
   return data.map((project) => ({
     id: project._id,
@@ -19,7 +19,7 @@ export async function generateStaticParams() {
 const Page = async ({ params }: { params: { id: string } }) => {
 
   const data = await getSpecificProject(params.id);
-  console.log(data)
+  
   if (!data) return <Loading />
 
   return (
@@ -60,7 +60,10 @@ const Page = async ({ params }: { params: { id: string } }) => {
             <ul className="list-disc pl-4 md:pl-5 lg:pl-6 text-sm md:text-base">
               {
                 data.publications.map((pub, index) => (
-                  <li key={index} className="my-3 md:my-4 lg:my-5 text-black text-opacity-80"><div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(pub.title+ '. ' + pub.authors + '. ' + pub.publisher + ". " + (pub.paperLink &&`<a class='text-blue-500 hover:underline' target='_blank' href=${pub.paperLink} >Link</a>`))}} /> </li>
+                  <li key={index} className="my-3 md:my-4 lg:my-5 text-black text-opacity-80">
+                    <div dangerouslySetInnerHTML={{ __html: 
+                      DOMPurify.sanitize((pub.paperLink ?`<a class='hover:text-blue-500 hover:underline' target='_blank' href=${pub.paperLink} >${pub.title}</a>` : pub.title)+ '. ' + pub.authors + '. ' + pub.publisher + ". ")}} />
+                </li>
                 ))
               }
             </ul>

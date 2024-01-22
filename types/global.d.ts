@@ -141,6 +141,7 @@ declare global {
         _id: string,
         statement: string,
         category: AchievementCategory,
+        image: string,
     }
     type PI_Type = {
         name: string,

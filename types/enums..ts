@@ -1,6 +1,7 @@
 export enum TeamMemberCategory {
     Mentor = 'mentor',
     Collaborator = 'collaborator',
+    InternationalStudents = 'international-students',
     Student = 'student',
 }
 
