@@ -50,7 +50,7 @@ const ProfessionalServices = () => {
                         <li>CSI, Life Member.</li>
                         <li>The IAPR, Life Member (L-273).</li>
                         <li>The IE India, Associate Member (AM3058193).</li>
-                        <li>IEEE, Member (98624682).</li>
+                        <li>Senior IEEE, Member (98624682).</li>
                         <li>ACM Member (0349556)</li>
                     </ul>
                 </div>

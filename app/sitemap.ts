@@ -1,7 +1,6 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const link = "https://swalpa.github.io"
   return [
     {
       url: `https://swalpa.github.io/`,
