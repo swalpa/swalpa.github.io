@@ -20,6 +20,7 @@
     "axios": "^1.6.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "embla-carousel-react": "^8.0.0-rc22",
     "isomorphic-dompurify": "^1.9.0",
     "lucide-react": "^0.291.0",
     "next": "^14.0.3",
