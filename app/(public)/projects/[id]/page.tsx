@@ -59,6 +59,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             <h2 className="text-xl lg:text-2xl font-semibold my-2">Publications</h2>
             <ul className="list-disc pl-4 md:pl-5 lg:pl-6 text-sm md:text-base">
               {
+                data.publications.length === 0  ? <p>Will be updated soon</p> :
                 data.publications.map((pub, index) => (
                   <li key={index} className="my-3 md:my-4 lg:my-5 text-black text-opacity-80">
                     <div dangerouslySetInnerHTML={{ __html: 
