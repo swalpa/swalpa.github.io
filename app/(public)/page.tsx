@@ -1,7 +1,7 @@
-import Hero from "@/components/Home/Hero";
-import ProfessionalServices from "@/components/Home/ProfessionalServices";
-import UpdatesAndStats from "@/components/Home/UpdatesAndStats";
-import Loading from "@/components/common/Loading";
+import Hero from "@/components/home/hero";
+import ProfessionalServices from "@/components/home/professional-services";
+import UpdatesAndStats from "@/components/home/news-section";
+import Loading from "@/components/common/loading";
 import { Suspense } from "react";
 
 export default function Home() {

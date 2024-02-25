@@ -23,11 +23,11 @@ declare global {
         }
     }
 
-    type teamMemberType = {
+    type TTeamMember = {
         _id:             string,
         name:            string,
         college:         string | null | undefined,
-        category:        TeamMemberCategory,
+        category:        'mentor' | 'collaborator' | 'international-students' | 'student',
         profileImage:    string,
         graduationYear:  number | null | undefined;
         currentPosition: string;
@@ -45,7 +45,7 @@ declare global {
        }]
     }
 
-    type TeachingAllDetails =  {
+    type TTeachingDetails =  {
         _id:                        string | null | undefined,
         title:                      string,
         creditPoints:               string,
@@ -141,7 +141,7 @@ declare global {
         _id: string,
         statement: string,
         category: AchievementCategory,
-        image: string,
+        image: string | undefined | null,
     }
     type PI_Type = {
         name: string,

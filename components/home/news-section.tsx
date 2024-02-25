@@ -1,9 +1,7 @@
 "use client";
+
 import useFetchUpdatesAndStats from "@/services/hooks/useFetchUpdatesAndStats";
-import Loading from "../common/Loading";
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Card, CardContent } from "@/components/ui/card";
+import Loading from "../common/loading";
 
 const UpdatesAndStats = () => {
   const data = useFetchUpdatesAndStats();
@@ -21,7 +19,7 @@ const UpdatesAndStats = () => {
                   key={index}
                   className="flex gap-x-5 mx-4 border-b border-black/5 py-1"
                 >
-                  <p className="text-blue-300 text-xs md:text-base w-[14%]">
+                  <p className="text-blue-300 text-xs md:text-base w-[9%]">
                     {update.date.toString().split("T")[0]}
                   </p>
                   <div
@@ -38,7 +36,7 @@ const UpdatesAndStats = () => {
                   key={index}
                   className="flex gap-x-5 mx-4 border-b border-black/5 py-1"
                 >
-                  <p className="text-blue-300 text-xs md:text-base w-[14%]">
+                  <p className="text-blue-300 text-xs md:text-base w-[9%]">
                     {update.date.toString().split("T")[0]}
                   </p>
                   <div

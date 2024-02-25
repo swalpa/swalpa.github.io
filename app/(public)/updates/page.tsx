@@ -1,4 +1,4 @@
-import Loading from '@/components/common/Loading';
+import Loading from '@/components/common/loading';
 import { getUpdates } from '@/services/serverActions';
 import { Metadata } from 'next';
 import { Suspense } from 'react';
