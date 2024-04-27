@@ -31,7 +31,7 @@ const images: string[] = [
   "https://i.ibb.co/7jJg8j5/Whats-App-Image-2024-02-10-at-3-24-29-PM-1.jpg",
   "https://i.ibb.co/N99ywxH/Whats-App-Image-2024-02-10-at-3-24-29-PM.jpg",
   "https://i.ibb.co/tZb3H0Q/Whats-App-Image-2024-02-10-at-3-24-29-PM-2.jpg",
-  "https://i.postimg.cc/ry0kzMjs/Whats-App-Image-2024-04-25-at-10-26-54-PM.jpg",
+  "https://i.postimg.cc/wBvsry6V/Whats-App-Image-2024-04-25-at-10-26-54-PM.jpg",
 ];
 
 const Page = async () => {
