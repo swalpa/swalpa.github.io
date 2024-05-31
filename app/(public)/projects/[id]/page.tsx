@@ -1,10 +1,11 @@
+import axios from "axios";
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
+import { getSpecificProject } from "@/services/serverActions";
 
 import Loading from "@/components/common/loading";
 import SheetWrapper from "@/components/wrappers/sheet-wrapper";
 import { Metadata, ResolvingMetadata } from "next";
-import apiCaller from "@/lib/api-caller";
 import { TProject } from "@/lib/validations/project";
 
 const server: string = process.env.NEXT_PUBLIC_NEW_API_URL!;
@@ -16,10 +17,7 @@ export async function generateMetadata(
   // read route params
   const id = params.id;
 
-  const { data } = await apiCaller<TProject>({
-    method: "GET",
-    url: `${server}/projects/${id}`,
-  });
+  const { data } = await axios.get<TProject>(`${server}/projects/${id}`);
 
   // optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || [];
@@ -56,10 +54,7 @@ export async function generateMetadata(
 }
 
 export async function generateStaticParams() {
-  const { data } = await apiCaller<TProject[]>({
-    method: "GET",
-    url: `${server}/projects`,
-  });
+  const { data } = await axios.get<TProject[]>(`${server}/projects`);
 
   if (!data) return [];
   return data.map((project) => ({
@@ -67,12 +62,9 @@ export async function generateStaticParams() {
   }));
 }
 const Page = async ({ params }: { params: { id: string } }) => {
-  const { data, status } = await apiCaller<TProject>({
-    method: "GET",
-    url: `${server}/projects/${params.id}?publications=1`,
-  });
+  const data = await getSpecificProject(params.id);
 
-  if (!data || status !== 200) return <Loading />;
+  if (!data) return <Loading />;
 
   return (
     <SheetWrapper>
@@ -104,15 +96,23 @@ const Page = async ({ params }: { params: { id: string } }) => {
             <h3 className="text-2xl font-semibold mt-3">Details</h3>
             <table className="w-full text-sm lg:text-base lg:w-full lg:ml-3 mt-3 md:mt-5">
               <tbody>
-                {data.details.map((inf, index) => (
-                  <tr
-                    key={index}
-                    className={`${index % 2 == 0 ? "bg-[#e4e4e4]" : ""}`}
-                  >
-                    <td className="p-2">{inf.name}</td>
-                    <td className="p-2 border-l border-black">{inf.description}</td>
-                  </tr>
-                ))}
+                {data.details &&
+                  data.details.map(
+                    (
+                      inf,
+                      index
+                    ) => (
+                      <tr
+                        key={index}
+                        className={`${index % 2 == 0 ? "bg-[#e4e4e4]" : ""}`}
+                      >
+                        <td className="p-2">{inf.name}</td>
+                        <td className="p-2 border-l border-black">
+                          {inf.description}
+                        </td>
+                      </tr>
+                    )
+                  )}
               </tbody>
             </table>
           </>
@@ -122,30 +122,36 @@ const Page = async ({ params }: { params: { id: string } }) => {
       <div>
         <h2 className="text-xl lg:text-2xl font-semibold my-2">Publications</h2>
         <ul className="list-disc pl-4 md:pl-5 lg:pl-6 text-sm md:text-base">
-          { !data.publications || data.publications.length === 0 ? (
+          {data.publications && data.publications.length === 0 ? (
             <p>Will be updated soon</p>
           ) : (
-            data.publications.map((pub, index) => (
-              <li
-                key={index}
-                className="my-3 md:my-4 lg:my-5 text-black text-opacity-80"
-              >
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(
-                      (pub.paperLink
-                        ? `<a class='hover:text-blue-500 hover:underline' target='_blank' href=${pub.paperLink} >${pub.title}</a>`
-                        : pub.title) +
-                        ". " +
-                        pub.authors +
-                        ". " +
-                        pub.publisher +
-                        ". "
-                    ),
-                  }}
-                />
-              </li>
-            ))
+            data.publications &&
+            data.publications.map(
+              (
+                pub,
+                index
+              ) => (
+                <li
+                  key={index}
+                  className="my-3 md:my-4 lg:my-5 text-black text-opacity-80"
+                >
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: DOMPurify.sanitize(
+                        (pub.paperLink
+                          ? `<a class='hover:text-blue-500 hover:underline' target='_blank' href=${pub.paperLink} >${pub.title}</a>`
+                          : pub.title) +
+                          ". " +
+                          pub.authors +
+                          ". " +
+                          pub.publisher +
+                          ". "
+                      ),
+                    }}
+                  />
+                </li>
+              )
+            )
           )}
         </ul>
       </div>
@@ -157,9 +163,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             <p
               className="my-1 text-center text-black text-opacity-60"
               dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(data.PI.description
-
-                ),
+                __html: DOMPurify.sanitize(data.PI.description),
               }}
             />
             <p className="font-semibold">Principal Investigator</p>

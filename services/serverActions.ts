@@ -1,16 +1,8 @@
+import { TProject } from "@/lib/validations/project";
 import axios from "axios";
 
-const server: string = process.env.NEXT_PUBLIC_API_URL as string;
+const server: string = process.env.NEXT_PUBLIC_API_URL!;
 
-export const getUpdates = async () => {
-  try {
-    const { data } = await axios.get<updateType[]>(`${server}/updates`);
-    return data;
-  } catch (error) {
-    console.log(error);
-    return false;
-  }
-};
 
 export const getInternshipData = async () => {
   try {
@@ -70,10 +62,7 @@ export const getProjects = async () => {
 
 export const getSpecificProject = async (id: string) => {
   try {
-    const { data } = await axios.get<{
-      project: ProjectType;
-      publications: Publication[];
-    }>(`${server}/projects/${id}`);
+    const { data } = await axios.get<TProject>(`${process.env.NEXT_PUBLIC_NEW_API_URL}/projects/${id}?publications=1`);
     console.log(data);
     return data;
   } catch (error) {

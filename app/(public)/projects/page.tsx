@@ -1,6 +1,6 @@
 import Loading from "@/components/common/loading";
-import apiCaller from "@/lib/api-caller";
 import { TProject } from "@/lib/validations/project";
+import axios from "axios";
 import DOMPurify from "isomorphic-dompurify";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -52,10 +52,10 @@ const Page = async () => {
 export default Page;
 
 async function getProjects() {
-  const { data, status } = await apiCaller<TProject[]>({
-    method: "GET",
-    url: `${process.env.NEXT_PUBLIC_NEW_API_URL}/projects`,
-  });
+  const { data, status } = await axios.get<TProject[]>(
+    `${process.env.NEXT_PUBLIC_NEW_API_URL}/projects`
+  );
 
   return { data, status };
 }
+
