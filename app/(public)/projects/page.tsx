@@ -1,5 +1,6 @@
 import Loading from "@/components/common/loading";
-import { getProjects } from "@/services/serverActions";
+import { TProject } from "@/lib/validations/project";
+import axios from "axios";
 import DOMPurify from "isomorphic-dompurify";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -21,21 +22,21 @@ export const metadata: Metadata = {
 };
 
 const Page = async () => {
-  const projects = await getProjects();
-  if (!projects) return <Loading />;
+  const { data, status } = await getProjects();
+  if (status !== 200 || !data) return <Loading />;
 
   return (
     <div className="min-h-[85vh] w-full flex flex-col items-center p-3 pb-2 lg:p-5 bg-[#F4F2F4]">
       <p className="h2-heading w-full md:w-4/5 lg:w-2/3 h-fit">Projects</p>
       <div className="w-full md:w-4/5 lg:w-2/3 p-1 space-y-2 lg:p-2">
-        {projects.map((project, index) => (
+        {data.map((project, index) => (
           <div
             key={index}
             className="w-full min-w-2 p-1 flex gap-2 px-2 text-base lg:text-xl font-medium text-black text-opacity-75"
           >
             <p>{index + 1}.</p>
             <Link
-              href={`/projects/${project._id}`}
+              href={`/projects/${project.id}`}
               className="hover:underline hover:text-blue-500"
               dangerouslySetInnerHTML={{
                 __html: DOMPurify.sanitize(project.title),
@@ -49,3 +50,11 @@ const Page = async () => {
 };
 
 export default Page;
+
+async function getProjects() {
+  const { data, status } = await axios.get<TProject[]>(
+    `${process.env.NEXT_PUBLIC_NEW_API_URL}/projects`
+  );
+
+  return { data, status };
+}

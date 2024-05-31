@@ -36,6 +36,7 @@ jobs:
     environment: production
     env:
       NEXT_PUBLIC_API_URL: ${{ vars.NEXT_PUBLIC_API_URL }}
+      NEXT_PUBLIC_NEW_API_URL: ${{ vars.NEXT_PUBLIC_NEW_API_URL }}
     steps:
       - name:
         run: echo "NEXT_PUBLIC_API_URL = $NEXT_PUBLIC_API_URL"
