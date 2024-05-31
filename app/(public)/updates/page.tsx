@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 };
 
 const Page = async () => {
-  const data = await getUpdates();
+  const { data } = await getUpdates();
   return (
     <div className="w-full flex justify-center p-5 min-h-[85vh]">
       <div className="w-full lg:w-2/3 xl:w-3/5">
@@ -59,3 +59,4 @@ const getUpdates = async () => {
     return false;
   }
 };
+

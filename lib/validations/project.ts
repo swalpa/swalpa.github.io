@@ -1,5 +1,4 @@
 import { z } from "zod";
-import DOMPurify from "isomorphic-dompurify";
 
 export const projectSchema = z
   .object({
@@ -83,5 +82,6 @@ export const projectSchema = z
           : null,
     };
   });
+
 
 export type TProject = z.infer<typeof projectSchema>;

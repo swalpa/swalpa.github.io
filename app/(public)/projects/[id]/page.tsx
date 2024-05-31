@@ -1,8 +1,7 @@
-import axios from "axios";
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
-import { getSpecificProject } from "@/services/serverActions";
 
+import { getSpecificProject } from "@/services/serverActions";
 import Loading from "@/components/common/loading";
 import SheetWrapper from "@/components/wrappers/sheet-wrapper";
 import { Metadata, ResolvingMetadata } from "next";
@@ -62,9 +61,12 @@ export async function generateStaticParams() {
   }));
 }
 const Page = async ({ params }: { params: { id: string } }) => {
-  const data = await getSpecificProject(params.id);
+  const { data, status } = await apiCaller<TProject>({
+    method: "GET",
+    url: `${server}/projects/${params.id}?publications=1`,
+  });
 
-  if (!data) return <Loading />;
+  if (!data || status !== 200) return <Loading />;
 
   return (
     <SheetWrapper>
@@ -123,6 +125,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
         <h2 className="text-xl lg:text-2xl font-semibold my-2">Publications</h2>
         <ul className="list-disc pl-4 md:pl-5 lg:pl-6 text-sm md:text-base">
           {data.publications && data.publications.length === 0 ? (
+
             <p>Will be updated soon</p>
           ) : (
             data.publications &&
@@ -164,6 +167,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
               className="my-1 text-center text-black text-opacity-60"
               dangerouslySetInnerHTML={{
                 __html: DOMPurify.sanitize(data.PI.description),
+
               }}
             />
             <p className="font-semibold">Principal Investigator</p>
