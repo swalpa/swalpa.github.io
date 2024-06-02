@@ -1,9 +1,10 @@
 import Loading from "@/components/common/loading";
 import { refactorPublications } from "@/lib/refactor-publications";
 import { cn } from "@/lib/utils";
-import { getPublications } from "@/services/serverActions";
+import { TPublication } from "@/lib/validations/publications";
 import { PublicationCategory } from "@/types/enums.";
-import { LucideCalculator, LucideCalendar } from "lucide-react";
+import axios from "axios";
+import { LucideCalendar } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -53,11 +54,11 @@ const Page = async () => {
                   <div className="w-[95%] mb-5">
                     {publicationWithYear.publications
                       .filter(
-                        (obj) => obj.category === PublicationCategory.Journal
+                        (obj) => obj.category === "journal"
                       )
                       .map((publication, index) => (
                         <div
-                          id={publication._id}
+                          id={publication.id}
                           key={index}
                           className={cn(
                             "w-full flex flex-col lg:flex-row items-start gap-x-8 p-1 lg:p-2 text-justify my-1",
@@ -66,7 +67,7 @@ const Page = async () => {
                         >
                           <div className="w-[160px] lg:w-[2%] pt-1 my-2 lg:my-0 flex gap-x-2 justify-between items-center">
                             <p className="font-semibold">
-                              {publication.serialNumber}
+                              {publication.index}
                             </p>
                             {publication.highlighted && (
                               <section className="animate-pulse text-red-600 text-xs block lg:hidden min-w-[170px]">
@@ -113,7 +114,7 @@ const Page = async () => {
                               {publication.publisher}
                             </p>
                             <div className="flex flex-wrap gap-3 mt-1 lg:mt-2">
-                              {publication.links.map((item, index) => (
+                              { publication.links && publication.links.map((item, index) => (
                                 <Link
                                   target="_blank"
                                   href={item.link}
@@ -129,11 +130,11 @@ const Page = async () => {
                       ))}
                     {publicationWithYear.publications
                       .filter(
-                        (obj) => obj.category === PublicationCategory.Conference
+                        (obj) => obj.category === "conference"
                       )
                       .map((publication, index) => (
                         <div
-                          id={publication._id}
+                          id={publication.id}
                           key={index}
                           className={cn(
                             "w-full flex flex-col lg:flex-row items-start gap-x-8 p-1 lg:p-2 text-justify border-t border-black/10"
@@ -141,7 +142,7 @@ const Page = async () => {
                         >
                           <div className="w-[160px] lg:w-[2%] pt-1 my-2 lg:my-0 flex gap-x-2 justify-between items-center">
                             <p className="font-semibold">
-                              {publication.serialNumber}
+                              {publication.index}
                             </p>
                             {publication.highlighted && (
                               <section className="animate-pulse text-red-600 text-xs block lg:hidden min-w-[170px]">
@@ -184,8 +185,8 @@ const Page = async () => {
                               }}
                             />
                             <div className="text-xs lg:text-sm text-black text-opacity-90 font-normal flex">
-                              {publication.publisher} 
-                              {publication.links.map((item, index) => (
+                              {publication.publisher}
+                              { publication.links && publication.links.map((item, index) => (
                                 <div key={index} className="flex gap-x-2">
                                   <Link
                                     target="_blank"
@@ -217,11 +218,11 @@ const Page = async () => {
                       ))}
                     {publicationWithYear.publications
                       .filter(
-                        (obj) => obj.category === PublicationCategory.Book
+                        (obj) => obj.category === "book"
                       )
                       .map((publication, index) => (
                         <div
-                          id={publication._id}
+                          id={publication.id}
                           key={index}
                           className={cn(
                             "w-full flex flex-col lg:flex-row items-start gap-x-8 p-1 lg:p-2 text-justify border-t border-black/10"
@@ -229,7 +230,7 @@ const Page = async () => {
                         >
                           <div className="w-[2%] pt-1 my-2 lg:my-0 flex gap-x-3 justify-between items-center">
                             <p className="font-semibold">
-                              {publication.serialNumber}
+                              {publication.index}
                             </p>
                             {publication.highlighted && (
                               <section className="animate-pulse text-red-600 text-xs block lg:hidden min-w-[170px]">
@@ -275,7 +276,7 @@ const Page = async () => {
                               {publication.publisher}
                             </p>
                             <div className="flex flex-wrap gap-3 mt-1 lg:mt-2">
-                              {publication.links.map((item, index) => (
+                              {publication.links && publication.links.map((item, index) => (
                                 <Link
                                   target="_blank"
                                   href={item.link}
@@ -300,3 +301,15 @@ const Page = async () => {
 };
 
 export default Page;
+
+const getPublications = async () => {
+  try {
+    const { data } = await axios.get<TPublication[]>(
+      `${process.env.NEXT_PUBLIC_NEW_API_URL}/publications`
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};

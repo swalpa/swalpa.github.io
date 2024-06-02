@@ -1,8 +1,10 @@
+import { TPublication } from "./validations/publications";
+
 interface IYearWisePublications {
     year: number;
-    publications: Publication[];
+    publications: TPublication[];
 }
-export const refactorPublications = (publications: Publication[]) => {
+export const refactorPublications = (publications: TPublication[]) => {
     const objs: IYearWisePublications[] = [];
     for(const publication of publications) {
         const year = publication.year;
