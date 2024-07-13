@@ -1,3 +1,4 @@
+//New API in use
 import Link from "next/link";
 import Image from "next/image";
 import DOMPurify from "isomorphic-dompurify";
@@ -6,7 +7,6 @@ import { Metadata } from "next";
 import { getAchievements } from "@/services/serverActions";
 
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { AchievementCategory } from "@/types/enums.";
 import { LucideAward } from "lucide-react";
 import Loading from "@/components/common/loading";
 
@@ -39,7 +39,7 @@ const Page = async () => {
   const achievements = await getAchievements();
   if (!achievements) return <Loading />;
   return (
-    <main className="w-full flex justify-center p-3 lg:p-5 min-h-screen bg-[#F4F2F4]">
+    <main className="w-full flex justify-center p-3 lg:p-5 min-h-screen bg-[#feffff]">
       <div className="w-full md:w-4/5 md:min-w-[770px] lg:w-4/5 lg:min-w-[900px] xl:w-3/4">
         <h2 className="h2-heading">Achievements</h2>
         {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center md:px-1.5 lg:px-3">
@@ -56,7 +56,7 @@ const Page = async () => {
           <ul className="list-disc pl-10 md:pl-12">
             {achievements
               .filter(
-                (obj) => obj.category === AchievementCategory.International
+                (obj) => obj.category === "international"
               )
               .map((achievement, index) => (
                 <AchievementImageItem key={index} data={achievement} />
@@ -69,7 +69,7 @@ const Page = async () => {
           </h3>
           <ul className="list-disc pl-10 md:pl-12">
             {achievements
-              .filter((obj) => obj.category === AchievementCategory.National)
+              .filter((obj) => obj.category === "national")
               .map((achievement, index) => (
                 <AchievementImageItem key={index} data={achievement} />
               ))}
@@ -120,7 +120,7 @@ const Page = async () => {
 
 export default Page;
 
-const AchievementImageItem = ({ data }: { data: AchievementType }) => {
+const AchievementImageItem = ({ data }: { data: TAchievements }) => {
   const imageLink = data.image
     ? `<b class='text-blue-400 font-normal hover:underline'>Link</b>`
     : ``;
@@ -130,7 +130,7 @@ const AchievementImageItem = ({ data }: { data: AchievementType }) => {
         <li className="text-justify text-[15px] md:text-[16px] my-1 text-black/75">
           <section
             dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(data.statement + " " + imageLink),
+              __html: DOMPurify.sanitize(data.description + " " + imageLink),
             }}
           />
         </li>
@@ -140,7 +140,7 @@ const AchievementImageItem = ({ data }: { data: AchievementType }) => {
           <div className="flex flex-col items-center">
             <Image
               src={data.image}
-              alt={data.statement}
+              alt={data.description}
               width={300}
               height={300}
               className="w-full object-contain"

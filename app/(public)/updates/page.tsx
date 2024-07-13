@@ -1,3 +1,4 @@
+// Uses new API
 import axios from "axios";
 import { Metadata } from "next";
 

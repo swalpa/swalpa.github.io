@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { SiGooglescholar, SiDblp, SiResearchgate, SiLoop, SiClarivate, SiScopus } from 'react-icons/si'
 import { FaGraduationCap } from 'react-icons/fa'
 
 const Hero = () => {

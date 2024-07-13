@@ -1,24 +1,29 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const useFetchTeachingAllDetails = (id: string): TTeachingDetails | null | false => {
-  const [teachingAllDetails, setTeachingAllDetails] = useState<TTeachingDetails | null>(null)
+const useFetchTeachingAllDetails = (
+  id: string
+): TFullTeachingDetails | null | false => {
+  const [teachingAllDetails, setTeachingAllDetails] =
+    useState<TFullTeachingDetails | null>(null);
 
-  useEffect(()=> {
-    (async ()=> {
-      setTeachingAllDetails(null)
-      if (!id ||  id === "") return false;
+  useEffect(() => {
+    (async () => {
+      setTeachingAllDetails(null);
+      if (!id || id === "") return false;
       try {
-        const { data } = await axios.get<TTeachingDetails>(`https://swalpa-backend.onrender.com/teaching/${id}`)
-        setTeachingAllDetails(data)
+        const { data } = await axios.get<TFullTeachingDetails>(
+          `https://swalpa-backend.onrender.com/teaching/${id}`
+        );
+        setTeachingAllDetails(data);
       } catch (error) {
-        console.log(error)
-        return false
+        console.log(error);
+        return false;
       }
-    })()
-  }, [id])
+    })();
+  }, [id]);
 
-  return teachingAllDetails
-}
+  return teachingAllDetails;
+};
 
-export default useFetchTeachingAllDetails
+export default useFetchTeachingAllDetails;

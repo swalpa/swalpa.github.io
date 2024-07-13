@@ -28,7 +28,7 @@ export const getPublications = async () => {
 
 export const getTeachings = async () => {
   try {
-    const { data } = await axios.get<TeachingHighlights[]>(
+    const { data } = await axios.get<TTeachings[]>(
       `${server}/teaching`
     );
     return data;
@@ -40,8 +40,8 @@ export const getTeachings = async () => {
 
 export const getAchievements = async () => {
   try {
-    const { data } = await axios.get<AchievementType[]>(
-      `${server}/achievements`
+    const { data } = await axios.get<TAchievements[]>(
+      `${process.env.NEXT_PUBLIC_NEW_API_URL}/achievements`
     );
     return data;
   } catch (error) {
@@ -55,7 +55,7 @@ export const getProjects = async () => {
     const { data } = await axios.get<ProjectType[]>(`${server}/projects`);
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return false;
   }
 };
@@ -63,22 +63,22 @@ export const getProjects = async () => {
 export const getSpecificProject = async (id: string) => {
   try {
     const { data } = await axios.get<TProject>(`${process.env.NEXT_PUBLIC_NEW_API_URL}/projects/${id}?publications=1`);
-    console.log(data);
+    
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return false;
   }
 };
 
 export const getSpecificTeaching = async (id: string) => {
   try {
-    const { data } = await axios.get<TTeachingDetails>(
-      `${server}/teaching/${id}`
+    const { data } = await axios.get<TFullTeachingDetails>(
+      `${process.env.NEXT_PUBLIC_NEW_API_URL}/teachings/${id}`
     );
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return false;
   }
 };

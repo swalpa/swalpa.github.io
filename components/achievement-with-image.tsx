@@ -3,7 +3,7 @@ import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
 import React from "react";
 
-const AchievementWithImage = ({ data }: { data: AchievementType }) => {
+const AchievementWithImage = ({ data }: { data: TAchievements }) => {
   return (
     <div className="w-full max-w-sm min-w-[384px] lg:max-w-none rounded-sm overflow-hidden shadow-sm shadow-black/10">
       <Image
@@ -16,12 +16,12 @@ const AchievementWithImage = ({ data }: { data: AchievementType }) => {
       <div className="bg-white">
         <p
           dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(data.statement),
+            __html: DOMPurify.sanitize(data.description),
           }}
           className="py-2.5 mx-5 text-justify text-[15px] border-b border-black/10"
         />
         <p className="mx-5 py-2 text-xl font-semibold">
-          {data.category === AchievementCategory.International
+          {data.category === "international"
             ? "International Achievement"
             : "National Achievement"}
         </p>

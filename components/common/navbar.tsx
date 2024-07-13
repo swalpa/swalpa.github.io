@@ -64,7 +64,7 @@ const Navbar = () => {
               href={link.href}
               className={`${
                 path === link.href ||
-                (path.includes("/teaching") && link.name === "Teaching")
+                (path.includes(link.href) && link.href !== "/")
                   ? "font-bold"
                   : ""
               }`}
@@ -74,7 +74,7 @@ const Navbar = () => {
                 <div
                   className={`${
                     path === link.href ||
-                    (path.includes("/teaching") && link.name === "Teaching")
+                    (path.includes(link.href) && link.href !== "/")
                       ? "bg-black h-[0.15rem] mt-[0.15rem]"
                       : "h-[0.15rem] mt-[0.15rem]"
                   }`}

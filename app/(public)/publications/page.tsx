@@ -1,8 +1,8 @@
+// Uses new API
 import Loading from "@/components/common/loading";
 import { refactorPublications } from "@/lib/refactor-publications";
 import { cn } from "@/lib/utils";
 import { TPublication } from "@/lib/validations/publications";
-import { PublicationCategory } from "@/types/enums.";
 import axios from "axios";
 import { LucideCalendar } from "lucide-react";
 import { Metadata } from "next";
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 
 const Page = async () => {
   const data = await getPublications();
-  console.log(data);
+  
   if (!data) return null;
   const publications = refactorPublications(data);
 

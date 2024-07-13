@@ -1,6 +1,6 @@
 import Loading from "@/components/common/loading";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { getTeamMembers } from "@/services/serverActions";
+import axios from "axios";
 import { LucideGlobe, LucideLinkedin } from "lucide-react";
 import Link from "next/link";
 
@@ -21,19 +21,31 @@ const Page = async () => {
       />
       <TeamCategory
         data={teamData.filter(
-          (member) => member.category === "international-students"
+          (member) => member.category === "international-student"
         )}
         categoryName="International Students"
       />
       <TeamCategory
-        data={teamData.filter((member) => member.category === "student")}
+        data={teamData.filter(
+          (member) => member.category === "domestic-student"
+        )}
         categoryName="National Students"
       />
     </main>
   );
 };
 
-export default Page;
+const getTeamMembers = async () => {
+  try {
+    const { data } = await axios.get<TTeamMember[]>(
+      `${process.env.NEXT_PUBLIC_NEW_API_URL}/team`
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};
 
 const TeamCategory = ({
   data,
@@ -56,8 +68,8 @@ const TeamCategory = ({
                 <img
                   loading="lazy"
                   src={
-                    member.profileImage
-                      ? member.profileImage
+                    member.image
+                      ? member.image
                       : "https://i.ibb.co/fYCYQQV/blank-profile-picture-973460-1280.png"
                   }
                   alt={member.name}
@@ -76,8 +88,8 @@ const TeamCategory = ({
               <img
                 loading="lazy"
                 src={
-                  member.profileImage
-                    ? member.profileImage
+                  member.image
+                    ? member.image
                     : "https://i.ibb.co/fYCYQQV/blank-profile-picture-973460-1280.png"
                 }
                 alt={member.name}
@@ -99,8 +111,8 @@ const TeamCategory = ({
                       <LucideLinkedin className="text-gray-700 mt-1" />
                     </Link>
                   )}
-                  {member.websiteLnk && (
-                    <Link href={member.websiteLnk} target="_blank">
+                  {member.website && (
+                    <Link href={member.website} target="_blank">
                       <LucideGlobe className="text-gray-700 mt-1" />
                     </Link>
                   )}
@@ -113,3 +125,5 @@ const TeamCategory = ({
     </div>
   );
 };
+
+export default Page;

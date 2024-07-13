@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 
 const useFetchAchievements = () => {
-  const [achievements, setAchievements] = useState<AchievementType[] | null | false>(null)
+  const [achievements, setAchievements] = useState<TAchievements[] | null | false>(null)
 
   useEffect(() => {
     (async () => {

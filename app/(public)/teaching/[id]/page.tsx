@@ -1,3 +1,4 @@
+// Uses new API
 import Loading from "@/components/common/loading";
 import SheetWrapper from "@/components/wrappers/sheet-wrapper";
 import { getSpecificTeaching } from "@/services/serverActions";
@@ -7,7 +8,6 @@ import { Metadata, ResolvingMetadata } from "next";
 
 const server: string = process.env.NEXT_PUBLIC_API_URL!;
 
-
 export async function generateMetadata(
   { params }: { params: { id: string } },
   parent: ResolvingMetadata
@@ -15,7 +15,9 @@ export async function generateMetadata(
   // read route params
   const id = params.id;
 
-  const { data } = await axios.get<TTeachingDetails>(`${server}/teaching/${id}`);
+  const { data } = await axios.get<TFullTeachingDetails>(
+    `${process.env.NEXT_PUBLIC_NEW_API_URL}/teachings/${id}`
+  );
 
   return {
     title: data.title,
@@ -38,10 +40,12 @@ export async function generateMetadata(
 }
 
 export async function generateStaticParams() {
-  const { data } = await axios.get<{ _id: string }[]>(`${server}/teaching/ids`);
+  const { data } = await axios.get<{ id: string }[]>(
+    `${process.env.NEXT_PUBLIC_NEW_API_URL}/teachings`
+  );
   if (!data) return [];
   return data.map((project) => ({
-    id: project._id,
+    id: project.id,
   }));
 }
 
@@ -66,47 +70,56 @@ const Page = async ({ params }: { params: { id: string } }) => {
           <strong>Routine:</strong>
           <ol className="list-decimal pl-7 md:pl-9 lg:pl-16 mt-2 grid lg:grid-cols-2">
             {data.routine.map((date, i) => (
-              <li key={i}>{date}</li>
+              <li key={i}>{date.data}</li>
             ))}
           </ol>
         </li>
         <p className="text-sm lg:text-base w-full text-center py-2 text-rose-600/80">
           <strong>Attention: </strong> Students having attendance below{" "}
-          {data.attendancePercentage.split("%")[0]}% will not be allowed to
-          appear in Semester Exam.
+          {data.minAttendance.split("%")[0]}% will not be allowed to appear in
+          Semester Exam.
         </p>
         <li className="my-1">
           <strong>Course description:</strong>
           <div
             className="text-justify pl-2 lg:mt-1"
             dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(data.courseDescription),
+              __html: DOMPurify.sanitize(data.description),
             }}
           />
         </li>
         <DisplayArrayContent
-          data={data.teachingLearningProccess}
+          data={data.learningProcess.map((process) => process.data)}
           name="Teaching Learning Process"
         />
         <DisplayArrayContent
-          data={data.courseObjectives}
+          data={data.courseObjectives.map((objective) => objective.data)}
           name="Course objectives"
         />
         <DisplayArrayContent
-          data={data.programmeObjectives}
+          data={data.programmeObjectives.map((objective) => objective.data)}
           name="Programme objectives"
         />
-        <DisplayArrayContent data={data.prerequisites} name="Prerequisites" />
-        <DisplayArrayContent data={data.syllabus} name="Syllabus" />
         <DisplayArrayContent
-          data={data.referenceBooks}
+          data={data.prerequisites.map((obj) => obj.data)}
+          name="Prerequisites"
+        />
+        <DisplayArrayContent
+          data={data.syllabus.map((obj) => obj.data)}
+          name="Syllabus"
+        />
+        <DisplayArrayContent
+          data={data.references.map((reference) => reference.data)}
           name="Recommended books"
         />
         <DisplayArrayContent
-          data={data.otherResources}
+          data={data.resouces.map((resource) => resource.data)}
           name="Other resources"
         />
-        <DisplayArrayContent data={data.miscellaneous} name="Miscellaneous" />
+        <DisplayArrayContent
+          data={data.miscellaneous.map((obj) => obj.data)}
+          name="Miscellaneous"
+        />
       </ul>
     </SheetWrapper>
   );

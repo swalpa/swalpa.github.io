@@ -1,3 +1,4 @@
+//Uses new API
 import Loading from "@/components/common/loading";
 import { TProject } from "@/lib/validations/project";
 import axios from "axios";
@@ -26,7 +27,7 @@ const Page = async () => {
   if (status !== 200 || !data) return <Loading />;
 
   return (
-    <div className="min-h-[85vh] w-full flex flex-col items-center p-3 pb-2 lg:p-5 bg-[#F4F2F4]">
+    <div className="min-h-[85vh] w-full flex flex-col items-center p-3 pb-2 lg:p-5 bg-[#feffff]">
       <p className="h2-heading w-full md:w-4/5 lg:w-2/3 h-fit">Projects</p>
       <div className="w-full md:w-4/5 lg:w-2/3 p-1 space-y-2 lg:p-2">
         {data.map((project, index) => (

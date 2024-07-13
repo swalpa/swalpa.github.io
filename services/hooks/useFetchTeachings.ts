@@ -2,13 +2,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export function useFetchTeaching(): TeachingHighlights[] {
-    const [teachings, setTeachings] = useState<TeachingHighlights[]>([]);
+export function useFetchTeaching(): TTeachings[] {
+    const [teachings, setTeachings] = useState<TTeachings[]>([]);
 
     useEffect(()=> {
         (async ()=> {
            try {
-                const { data } = await axios.get<TeachingHighlights[]>(`https://swalpa-backend.onrender.com/teaching`);
+                const { data } = await axios.get<TTeachings[]>(`https://swalpa-backend.onrender.com/teaching`);
                 console.log(data);
                 setTeachings(data);
            } catch (error) {

@@ -1,3 +1,4 @@
+// Uses new API
 import axios from "axios";
 import DOMPurify from "isomorphic-dompurify";
 import Image from "next/image";
@@ -8,7 +9,7 @@ import SheetWrapper from "@/components/wrappers/sheet-wrapper";
 import { Metadata, ResolvingMetadata } from "next";
 import { TProject } from "@/lib/validations/project";
 
-const server: string = process.env.NEXT_PUBLIC_NEW_API_URL!;
+const newServer: string = process.env.NEXT_PUBLIC_NEW_API_URL!;
 
 export async function generateMetadata(
   { params }: { params: { id: string } },
@@ -17,7 +18,9 @@ export async function generateMetadata(
   // read route params
   const id = params.id;
 
-  const { data } = await axios.get<TProject>(`${server}/projects/${id}`);
+  const { data } = await axios.get<TProject>(
+    `${process.env.NEXT_PUBLIC_NEW_API_URL}/projects/${id}`
+  );
 
   // optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || [];
@@ -54,7 +57,7 @@ export async function generateMetadata(
 }
 
 export async function generateStaticParams() {
-  const { data } = await axios.get<TProject[]>(`${server}/projects`);
+  const { data } = await axios.get<TProject[]>(`${newServer}/projects`);
 
   if (!data) return [];
   return data.map((project) => ({
@@ -97,22 +100,17 @@ const Page = async ({ params }: { params: { id: string } }) => {
             <table className="w-full text-sm lg:text-base lg:w-full lg:ml-3 mt-3 md:mt-5">
               <tbody>
                 {data.details &&
-                  data.details.map(
-                    (
-                      inf,
-                      index
-                    ) => (
-                      <tr
-                        key={index}
-                        className={`${index % 2 == 0 ? "bg-[#e4e4e4]" : ""}`}
-                      >
-                        <td className="p-2">{inf.name}</td>
-                        <td className="p-2 border-l border-black">
-                          {inf.description}
-                        </td>
-                      </tr>
-                    )
-                  )}
+                  data.details.map((inf, index) => (
+                    <tr
+                      key={index}
+                      className={`${index % 2 == 0 ? "bg-[#e4e4e4]" : ""}`}
+                    >
+                      <td className="p-2">{inf.name}</td>
+                      <td className="p-2 border-l border-black">
+                        {inf.description}
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </>
@@ -126,32 +124,27 @@ const Page = async ({ params }: { params: { id: string } }) => {
             <p>Will be updated soon</p>
           ) : (
             data.publications &&
-            data.publications.map(
-              (
-                pub,
-                index
-              ) => (
-                <li
-                  key={index}
-                  className="my-3 md:my-4 lg:my-5 text-black text-opacity-80"
-                >
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: DOMPurify.sanitize(
-                        (pub.paperLink
-                          ? `<a class='hover:text-blue-500 hover:underline' target='_blank' href=${pub.paperLink} >${pub.title}</a>`
-                          : pub.title) +
-                          ". " +
-                          pub.authors +
-                          ". " +
-                          pub.publisher +
-                          ". "
-                      ),
-                    }}
-                  />
-                </li>
-              )
-            )
+            data.publications.map((pub, index) => (
+              <li
+                key={index}
+                className="my-3 md:my-4 lg:my-5 text-black text-opacity-80"
+              >
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(
+                      (pub.paperLink
+                        ? `<a class='hover:text-blue-500 hover:underline' target='_blank' href=${pub.paperLink} >${pub.title}</a>`
+                        : pub.title) +
+                        ". " +
+                        pub.authors +
+                        ". " +
+                        pub.publisher +
+                        ". "
+                    ),
+                  }}
+                />
+              </li>
+            ))
           )}
         </ul>
       </div>

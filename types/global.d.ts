@@ -29,22 +29,28 @@ declare global {
   };
 
   type TTeamMember = {
-    _id: string;
+    id: string;
     name: string;
-    college: string | null | undefined;
-    category: "mentor" | "collaborator" | "international-students" | "student";
-    profileImage: string;
-    graduationYear: number | null | undefined;
-    currentPosition: string;
-    linkedIn: string | null | undefined;
-    websiteLnk: string | null | undefined;
+    category:
+      | "mentor"
+      | "collaborator"
+      | "international-student"
+      | "domestic-student";
+    college: string | null;
+    image: string;
+    graduation: string | null;
+    description: string | null;
+    linkedIn: string | null;
+    website: string | null;
+    github: string | null;
+    googleScholar: string | null;
   };
 
-  type TeachingHighlights = {
+  type TTeachings = {
     year: number;
     teachings: [
       {
-        _id: string;
+        id: string;
         title: string;
         startDate: Date;
         year: number;
@@ -59,28 +65,28 @@ declare global {
     featured: boolean;
   };
 
-  type TTeachingDetails = {
-    _id: string | null | undefined;
+  interface TFullTeachingDetails {
+    id: string;
     title: string;
     creditPoints: string;
-    classLocation: string;
-    startDate: Date;
+    start: number;
     session: string;
-    year: number | null;
-    attendancePercentage: string;
-    routine: string[];
-    courseDescription: string;
-    courseObjectives: string[];
-    programmeObjectives: string[];
-    teachingLearningProccess: string[];
-    syllabus: string[];
-    referenceBooks: string[];
-    prerequisites: string[];
-    assignmentInstructions: string;
-    gradingPolicy: string[];
-    otherResources: string[];
-    miscellaneous: string[];
-  };
+    year: number;
+    minAttendance: string;
+    class: string;
+    routine: { data: string }[];
+    description: string;
+    courseObjectives: { data: string }[];
+    programmeObjectives: { data: string }[];
+    learningProcess: { data: string }[];
+    syllabus: { data: string }[];
+    references: { data: string }[];
+    prerequisites: { data: string }[];
+    assignment: string;
+    grading: { data: string }[];
+    resouces: { data: string }[];
+    miscellaneous: { data: string }[];
+  }
 
   type InternshipsHighlights = {
     _id: string;
@@ -152,11 +158,13 @@ declare global {
     password: string;
   };
 
-  type AchievementType = {
-    _id: string;
-    statement: string;
-    category: AchievementCategory;
-    image: string | undefined | null;
+  type TAchievements = {
+    id: string;
+    random: number | null;
+    category: "international" | "national";
+    image: string | null;
+    description: string;
+    year: number;
   };
   type PI_Type = {
     name: string;
