@@ -33,6 +33,7 @@ const images: string[] = [
   "https://i.ibb.co/tZb3H0Q/Whats-App-Image-2024-02-10-at-3-24-29-PM-2.jpg",
   "https://i.postimg.cc/wBvsry6V/Whats-App-Image-2024-04-25-at-10-26-54-PM.jpg",
   "https://i.postimg.cc/YCZn784P/pdfresizer-com-pdf-crop-1.png",
+  "https://i.postimg.cc/9QkzrrS5/240714-20h53m51s-screenshot.png",
 ];
 
 const Page = async () => {
@@ -55,9 +56,7 @@ const Page = async () => {
           </h3>
           <ul className="list-disc pl-10 md:pl-12">
             {achievements
-              .filter(
-                (obj) => obj.category === "international"
-              )
+              .filter((obj) => obj.category === "international")
               .map((achievement, index) => (
                 <AchievementImageItem key={index} data={achievement} />
               ))}

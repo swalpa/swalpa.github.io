@@ -1,0 +1,13 @@
+				@font-face {
+					font-family: 'noto-serif';
+					src: url('/wp-content/uploads/useanyfont/2195Noto-Serif.woff2') format('woff2'),
+						url('/wp-content/uploads/useanyfont/2195Noto-Serif.woff') format('woff');
+					font-weight: 100; font-style: normal; font-display: auto;
+				}
+
+				.noto-serif{font-family: 'noto-serif' !important;}
+
+						h1, h2, h3, h4, h5, h6, .entry-title, body.single-post .entry-title, body.page .entry-title, body.category .entry-title, .widget-title, body, p, blockquote, li, a, strong, b, em, .menu-header-main-container li a, .menu-header-main-container li span, #menu-header-main li a, #menu-header-main li span{
+					font-family: 'noto-serif' !important;
+				}
+		
