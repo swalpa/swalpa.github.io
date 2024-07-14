@@ -92,6 +92,17 @@ const ProfessionalServices = () => {
               an open non-profit platform for cutting edge AI research to solve
               real-life computer vision challenges.
             </li>
+            <li>
+              <b>Advisory</b> in{" "}
+              <a
+                target="_blank"
+                className="text-blue-500 hover:underline"
+                href="https://bhusatyam.com/"
+              >
+                Bhusatyam Technologies Pvt. Ltd.
+              </a>{" "}
+              for AI related product development research.
+            </li>
           </ul>
         </div>
       </div>
