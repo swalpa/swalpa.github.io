@@ -1,10 +1,8 @@
-"use client";
-
-import useFetchUpdatesAndStats from "@/services/hooks/useFetchUpdatesAndStats";
+import axios from "axios";
 import Loading from "../common/loading";
 
-const UpdatesAndStats = () => {
-  const data = useFetchUpdatesAndStats();
+const UpdatesAndStats = async () => {
+  const { data } = await axios.get<TNews[]>(`${process.env.NEXT_PUBLIC_NEW_API_URL}/news`);
 
   if (!data) return <Loading />;
   return (
@@ -14,7 +12,7 @@ const UpdatesAndStats = () => {
         <div className=" overflow-hidden">
           <div className="w-full animate-marquee overflow-hidden">
             {data &&
-              data.updates.map((update: updateType, index: number) => (
+              data.filter(news => news.featured === true).map((update, index: number) => (
                 <div
                   key={index}
                   className="flex gap-x-5 mx-4 border-b border-black/5 py-1"
@@ -31,7 +29,7 @@ const UpdatesAndStats = () => {
           </div>
           <div className="w-full animate-marquee overflow-hidden">
             {data &&
-              data.updates.map((update: updateType, index: number) => (
+              data.filter( news => news.featured === true).map((update, index: number) => (
                 <div
                   key={index}
                   className="flex gap-x-5 mx-4 border-b border-black/5 py-1"
