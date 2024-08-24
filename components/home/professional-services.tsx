@@ -46,11 +46,12 @@ const ProfessionalServices = () => {
             <h3 className="text-xl lg:text-2xl">Professional Memberships</h3>
           </div>
           <ul className="list-disc pl-7 lg:pl-10 lg:text-lg">
-            <li>CSI, Life Member.</li>
+            <li>IASc Associates</li>
             <li>The IAPR, Life Member (L-273).</li>
             <li>The IE India, Associate Member (AM3058193).</li>
             <li>IEEE, Senior Member (98624682).</li>
             <li>ACM Member (0349556)</li>
+            
           </ul>
         </div>
         <div className="mt-7 w-full lg:w-2/3">
