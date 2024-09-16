@@ -161,7 +161,7 @@ declare global {
   type TAchievements = {
     id: string;
     random: number | null;
-    category: "international" | "national";
+    category: "international" | "national" | "academy";
     image: string | null;
     description: string;
     year: number;

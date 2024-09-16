@@ -75,6 +75,18 @@ const Page = async () => {
               ))}
           </ul>
         </div>
+        <div className="my-3 mb-7 pr-1">
+          <h3 className="text-2xl font-semibold my-2 md:px-2 flex gap-x-1 items-center">
+            <LucideAward size={23} /> Academy recognitions
+          </h3>
+          <ul className="list-disc pl-10 md:pl-12">
+            {achievements
+              .filter((obj) => obj.category === "academy")
+              .map((achievement, index) => (
+                <AchievementImageItem key={index} data={achievement} />
+              ))}
+          </ul>
+        </div>
         <h3 className="text-2xl font-semibold my-2 md:px-2 flex gap-x-1 mt-3 items-center">
           <LucideAward size={23} /> Media highlights
         </h3>

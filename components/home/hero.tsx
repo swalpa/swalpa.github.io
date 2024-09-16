@@ -47,7 +47,7 @@ const Hero = () => {
               Swalpa Kumar Roy, (Bangla: স্বল্প কুমার রায়।) has been with the Alipurduar Government Engineering and Management College, Alipurduar. Previously, he was associated with the Jalpaiguri Government Engineering College, Jalpaiguri, the 5th oldest technical institution and one of the 
               most prestigious academic institution in West Bengal where he is associated with the Department of Computer Science and Engineering and holds the position of assistant professor from 
               March 2018 onward. Swalpa Kumar Roy is also working with Prof. Bhabatosh Chanda, Fellow, IAPR and Prof. Bidyut Baran Chaudhuri, Fellow, IEEE, Computer Vision and Pattern Recognition (CVPR) Unit at Indian 
-              Statistical Institute, Kolkata during his Ph.D. research. He is also working under Prof. Soumitro Banerjee, Fellow, IEEE, at Indian Institute of Science Education and Research, Kolkata.Before joining CVPR 
+              Statistical Institute, Kolkata during his Ph.D. research. He is also working under Prof. Soumitro Banerjee, Fellow, IEEE, at Indian Institute of Science Education and Research, Kolkata. Before joining CVPR 
               Unit, ISI Kolkata, he received his B. Tech (Computer Science & Engineering) degree from West Bengal University of Technology, Kolkata, and M. E (Computer Science & Engineering) degree from the Indian Institute of 
               Engineering Science and Technology, Shibpur. He also worked as a Project-Linked-Person (PLP) at the OCR Lab, CVPR Unit, Indian Statistical Institute, Kolkata.
             </section>
