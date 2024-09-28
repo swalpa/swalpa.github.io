@@ -60,7 +60,7 @@ const Page = async () => {
 const getTeachings = async () => {
   try {
     const { data } = await axios.get<TTeachings[]>(
-      `${process.env.NEXT_PUBLIC_NEW_API_URL}/teachings/`
+      `${process.env.NEXT_PUBLIC_NEW_API_URL}/teachings/highlights`
     );
 
     return data;
