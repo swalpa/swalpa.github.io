@@ -152,11 +152,11 @@ const profileLinks: {
     link: "https://www.researchgate.net/profile/Swalpa-Roy",
     icon: "https://i.ibb.co/p4hbxD4/RG.png",
   },
-  {
-    title: "Loop",
-    link: "https://loop.frontiersin.org/people/2122815/overview",
-    icon: "https://i.ibb.co/3SMKJFq/looplogo-thumb.png",
-  },
+  // {
+  //   title: "Loop",
+  //   link: "https://loop.frontiersin.org/people/2122815/overview",
+  //   icon: "https://i.ibb.co/3SMKJFq/looplogo-thumb.png",
+  // },
   {
     title: "Web of Science",
     link: "https://www.webofscience.com/wos/author/record/2068252",

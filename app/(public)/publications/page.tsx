@@ -4,6 +4,7 @@ import { refactorPublications } from "@/lib/refactor-publications";
 import { cn } from "@/lib/utils";
 import { TPublication } from "@/lib/validations/publications";
 import axios from "axios";
+import { sanitize } from "isomorphic-dompurify";
 import { LucideCalendar } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
 
 const Page = async () => {
   const data = await getPublications();
-  
+
   if (!data) return null;
   const publications = refactorPublications(data);
 
@@ -53,242 +54,28 @@ const Page = async () => {
                   </div>
                   <div className="w-[95%] mb-5">
                     {publicationWithYear.publications
-                      .filter(
-                        (obj) => obj.category === "journal"
-                      )
+                      .filter((obj) => obj.category === "journal")
                       .map((publication, index) => (
-                        <div
-                          id={publication.id}
+                        <PublicationComp
                           key={index}
-                          className={cn(
-                            "w-full flex flex-col lg:flex-row items-start gap-x-8 p-1 lg:p-2 text-justify my-1",
-                            index !== 0 && "border-t border-black/10"
-                          )}
-                        >
-                          <div className="w-[160px] lg:w-[2%] pt-1 my-2 lg:my-0 flex gap-x-2 justify-between items-center">
-                            <p className="font-semibold">
-                              {publication.index}
-                            </p>
-                            {publication.highlighted && (
-                              <section className="animate-pulse text-red-600 text-xs block lg:hidden min-w-[170px]">
-                                ESI Highly Cited Paper
-                              </section>
-                            )}
-                          </div>
-
-                          <div className="w-[95%] lg:text-xl flex flex-col gap-2 font-medium">
-                            {publication.paperLink ? (
-                              <div className="flex gap-x-2">
-                                <Link
-                                  target="_blank"
-                                  className="text-blue-500 hover:underline cursor-pointer"
-                                  href={publication.paperLink}
-                                >
-                                  {publication.title}
-                                </Link>{" "}
-                                {publication.highlighted && (
-                                  <section className="hidden lg:block animate-pulse text-red-600 text-xs min-w-[170px]">
-                                    ESI Highly Cited Paper
-                                  </section>
-                                )}
-                              </div>
-                            ) : (
-                              <div className="flex gap-x-2">
-                                <p className="font-medium">
-                                  {publication.title}
-                                </p>
-                                {publication.highlighted && (
-                                  <section className="hidden lg:block animate-pulse text-red-600 text-xs min-w-[170px]">
-                                    ESI Highly Cited Paper
-                                  </section>
-                                )}
-                              </div>
-                            )}
-                            <i
-                              className="text-sm lg:text-base text-black text-opacity-80 font-normal"
-                              dangerouslySetInnerHTML={{
-                                __html: publication.authors,
-                              }}
-                            />
-                            <p className="text-xs lg:text-sm text-black text-opacity-90 font-normal">
-                              {publication.publisher}
-                            </p>
-                            <div className="flex flex-wrap gap-3 mt-1 lg:mt-2">
-                              { publication.links && publication.links.map((item, index) => (
-                                <Link
-                                  target="_blank"
-                                  href={item.link}
-                                  key={index}
-                                  className="px-2 p-1 text-sm border border-black/30 hover:text-white hover:bg-black/90 transition rounded-sm w-fit"
-                                >
-                                  {item.name}
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
+                          publication={publication}
+                        />
                       ))}
                     {publicationWithYear.publications
-                      .filter(
-                        (obj) => obj.category === "conference"
-                      )
+                      .filter((obj) => obj.category === "conference")
                       .map((publication, index) => (
-                        <div
-                          id={publication.id}
+                        <PublicationComp
                           key={index}
-                          className={cn(
-                            "w-full flex flex-col lg:flex-row items-start gap-x-8 p-1 lg:p-2 text-justify border-t border-black/10"
-                          )}
-                        >
-                          <div className="w-[160px] lg:w-[2%] pt-1 my-2 lg:my-0 flex gap-x-2 justify-between items-center">
-                            <p className="font-semibold">
-                              {publication.index}
-                            </p>
-                            {publication.highlighted && (
-                              <section className="animate-pulse text-red-600 text-xs block lg:hidden min-w-[170px]">
-                                ESI Highly Cited Paper
-                              </section>
-                            )}
-                          </div>
-                          <div className="w-[95%] lg:text-xl flex flex-col gap-2 font-medium">
-                            {publication.paperLink ? (
-                              <div className="flex gap-x-2">
-                                <Link
-                                  target="_blank"
-                                  className="text-blue-500 hover:underline cursor-pointer"
-                                  href={publication.paperLink}
-                                >
-                                  {publication.title}
-                                </Link>{" "}
-                                {publication.highlighted && (
-                                  <section className="hidden lg:block animate-pulse text-red-600 text-xs min-w-[170px]">
-                                    ESI Highly Cited Paper
-                                  </section>
-                                )}
-                              </div>
-                            ) : (
-                              <div className="flex gap-x-2">
-                                <p className="font-medium">
-                                  {publication.title}
-                                </p>
-                                {publication.highlighted && (
-                                  <section className="hidden lg:block animate-pulse text-red-600 text-xs min-w-[170px]">
-                                    ESI Highly Cited Paper
-                                  </section>
-                                )}
-                              </div>
-                            )}
-                            <i
-                              className="text-sm lg:text-base text-black text-opacity-80 font-normal"
-                              dangerouslySetInnerHTML={{
-                                __html: publication.authors,
-                              }}
-                            />
-                            <div className="text-xs lg:text-sm text-black text-opacity-90 font-normal flex">
-                              {publication.publisher}
-                              { publication.links && publication.links.map((item, index) => (
-                                <div key={index} className="flex gap-x-2">
-                                  <Link
-                                    target="_blank"
-                                    href={item.link}
-                                    key={index}
-                                    className="px-2 p-1 text-sm border border-black/30 hover:text-white hover:bg-black/90 transition rounded-sm w-fit"
-                                  >
-                                    {item.name}
-                                  </Link>
-                                </div>
-                              ))}
-                            </div>
-                            {/* <div className="flex flex-wrap gap-3 mt-1 lg:mt-2">
-                              {publication.links.map((item, index) => (
-                                <div key={index} className="flex gap-x-2">
-                                  <Link
-                                    target="_blank"
-                                    href={item.link}
-                                    key={index}
-                                    className="px-2 p-1 text-sm border border-black/30 hover:text-white hover:bg-black/90 transition rounded-sm w-fit"
-                                  >
-                                    {item.name}
-                                  </Link>
-                                </div>
-                              ))}
-                            </div> */}
-                          </div>
-                        </div>
+                          publication={publication}
+                        />
                       ))}
                     {publicationWithYear.publications
-                      .filter(
-                        (obj) => obj.category === "book"
-                      )
+                      .filter((obj) => obj.category === "book")
                       .map((publication, index) => (
-                        <div
-                          id={publication.id}
+                        <PublicationComp
                           key={index}
-                          className={cn(
-                            "w-full flex flex-col lg:flex-row items-start gap-x-8 p-1 lg:p-2 text-justify border-t border-black/10"
-                          )}
-                        >
-                          <div className="w-[2%] pt-1 my-2 lg:my-0 flex gap-x-3 justify-between items-center">
-                            <p className="font-semibold">
-                              {publication.index}
-                            </p>
-                            {publication.highlighted && (
-                              <section className="animate-pulse text-red-600 text-xs block lg:hidden min-w-[170px]">
-                                ESI Highly Cited Paper
-                              </section>
-                            )}
-                          </div>
-                          <div className="w-[95%] lg:text-xl flex flex-col gap-2 font-medium">
-                            {publication.paperLink ? (
-                              <div className="flex gap-x-2">
-                                <Link
-                                  target="_blank"
-                                  className="text-blue-500 hover:underline cursor-pointer"
-                                  href={publication.paperLink}
-                                >
-                                  {publication.title}
-                                </Link>{" "}
-                                {publication.highlighted && (
-                                  <section className="hidden lg:block animate-pulse text-red-600 text-xs min-w-[170px]">
-                                    ESI Highly Cited Paper
-                                  </section>
-                                )}
-                              </div>
-                            ) : (
-                              <div className="flex gap-x-2">
-                                <p className="font-medium">
-                                  {publication.title}
-                                </p>
-                                {publication.highlighted && (
-                                  <section className="hidden lg:block animate-pulse text-red-600 text-xs min-w-[170px]">
-                                    ESI Highly Cited Paper
-                                  </section>
-                                )}
-                              </div>
-                            )}
-                            <i
-                              className="text-sm lg:text-base text-black text-opacity-80 font-normal"
-                              dangerouslySetInnerHTML={{
-                                __html: publication.authors,
-                              }}
-                            />
-                            <p className="text-xs lg:text-sm text-black text-opacity-90 font-normal">
-                              {publication.publisher}
-                            </p>
-                            <div className="flex flex-wrap gap-3 mt-1 lg:mt-2">
-                              {publication.links && publication.links.map((item, index) => (
-                                <Link
-                                  target="_blank"
-                                  href={item.link}
-                                  key={index}
-                                  className="px-2 p-1 text-sm border border-black/30 hover:text-white hover:bg-black/90 transition rounded-sm w-fit"
-                                >
-                                  {item.name}
-                                </Link>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
+                          publication={publication}
+                        />
                       ))}
                   </div>
                 </div>
@@ -313,3 +100,47 @@ const getPublications = async () => {
     return false;
   }
 };
+
+function PublicationComp({ publication }: { publication: TPublication }) {
+  return (
+    <div className="flex gap-x-4 my-1.5" >
+      <p className="text-base font-semibold mt-0.5">{publication.index}</p>
+      <div className="">
+        <i
+          dangerouslySetInnerHTML={{ __html: sanitize(publication.authors) }}
+        />
+        &nbsp; &quot;
+        {publication.paperLink ? (
+          <span>
+            <Link href={publication.paperLink} className="hover:underline">
+              {publication.title}
+            </Link>
+          </span>
+        ) : (
+          <span>{publication.title}</span>
+        )}
+        &quot;&nbsp;
+        <span>{publication.publisher}</span>
+        {publication.links &&
+          publication.links.map((link, index) => (
+            <Link
+              key={index}
+              href={link.link}
+              className={cn(
+                "border border-black/25 rounded-sm px-1 py-0.5 ",
+                index === 0 ? "ml-1" : "ml-2"
+              )}
+            >
+              {link.name}
+            </Link>
+          ))}
+        &nbsp;
+        {publication.highlighted && (
+          <span className="text-rose-400 text-xs animate-pulse">
+            ESI Highly Cited Paper
+          </span>
+        )}
+      </div>
+    </div>
+  );
+}
