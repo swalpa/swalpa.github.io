@@ -103,16 +103,19 @@ const getPublications = async () => {
 
 function PublicationComp({ publication }: { publication: TPublication }) {
   return (
-    <div className="flex gap-x-4 my-1.5" >
+    <div className="flex gap-x-4 my-1.5">
       <p className="text-base font-semibold mt-0.5">{publication.index}</p>
-      <div className="">
+      <div className="my-1.5">
         <i
           dangerouslySetInnerHTML={{ __html: sanitize(publication.authors) }}
         />
         &nbsp; &quot;
         {publication.paperLink ? (
           <span>
-            <Link href={publication.paperLink} className="hover:underline">
+            <Link
+              href={publication.paperLink}
+              className="hover:underline hover:text-blue-500"
+            >
               {publication.title}
             </Link>
           </span>
