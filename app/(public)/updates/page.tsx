@@ -37,6 +37,7 @@ const Page = async () => {
                 <p className="text-blue-300 w-1/5 max-w-[125px]">
                   {update.date.toString().split("T")[0]}
                 </p>
+                <p className="min-w-[115px] max-w-[150px] flex justify-center items-center">{update.category}</p>
                 <div
                   className="w-4/5"
                   dangerouslySetInnerHTML={{ __html: update.title }}
@@ -53,7 +54,9 @@ export default Page;
 
 const getUpdates = async () => {
   try {
-    const { data } = await axios.get<TNews[]>(`${process.env.NEXT_PUBLIC_NEW_API_URL}/news`);
+    const { data } = await axios.get<TNews[]>(
+      `${process.env.NEXT_PUBLIC_NEW_API_URL}/news`
+    );
     return data;
   } catch (error) {
     console.log(error);

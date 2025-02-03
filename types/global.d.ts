@@ -63,6 +63,7 @@ declare global {
     title: string;
     date: Date;
     featured: boolean;
+    category: string | null;
   };
 
   interface TFullTeachingDetails {
