@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { FaGraduationCap } from "react-icons/fa";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 export default function Hero() {
   return (
@@ -27,16 +28,20 @@ export default function Hero() {
         </a>
         <div className="flex gap-x-4 items-center justify-center mt-4">
           {profileLinks.map((link, index) => (
-            <Link href={link.link} key={index} target="_blank">
-              <Image
-                src={link.icon}
-                alt={link.title}
-                title={link.title}
-                width={75}
-                height={75}
-                className={cn("w-8 h-8", link.className)}
-              />
-            </Link>
+            <Tooltip key={index}>
+              <TooltipTrigger>
+                <Link href={link.link} key={index} target="_blank">
+                  <Image
+                    src={link.icon}
+                    alt={link.title}
+                    width={75}
+                    height={75}
+                    className={cn("w-8 h-8", link.className)}
+                  />
+                </Link>
+              </TooltipTrigger>
+              <TooltipContent>{link.title}</TooltipContent>
+            </Tooltip>
           ))}
         </div>
       </div>
@@ -66,7 +71,7 @@ export default function Hero() {
             Kolkata.
           </section>
         </div>
-        <div className="w-full mt-7 flex flex-col lg:flex-row gap-y-8 lg:gap-x-32">
+        <div className="w-full mt-7 flex flex-col lg:flex-row gap-y-8 lg:gap-x-10">
           <div className="w-full lg:w-fit">
             <h2 className="h2-heading ml-2 w-full">Interest</h2>
             <section>
