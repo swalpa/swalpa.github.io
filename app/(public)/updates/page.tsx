@@ -25,7 +25,7 @@ const Page = async () => {
   const data = await getUpdates();
   return (
     <div className="w-full flex justify-center p-5 min-h-[85vh]">
-      <div className="w-full lg:w-2/3 xl:w-3/5">
+      <div className="w-full lg:w-[90%] xl:w-4/5">
         <h2 className="h2-heading">News</h2>
         <div className="w-full">
           {data &&

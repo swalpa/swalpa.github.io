@@ -2,11 +2,12 @@ import axios from "axios";
 import Loading from "../common/loading";
 
 const UpdatesAndStats = async () => {
+  console.log(`${process.env.NEXT_PUBLIC_NEW_API_URL}/news`)
   const { data } = await axios.get<TNews[]>(`${process.env.NEXT_PUBLIC_NEW_API_URL}/news`);
 
   if (!data) return <Loading />;
   return (
-    <div className="w-[90%] xl:w-3/4 flex flex-col-reverse lg:flex-row gap-x-6 pb-5">
+    <div className="flex flex-col-reverse lg:flex-row gap-x-6 pb-5">
       <div className="w-full h-[30rem] overflow-hidden">
         <h2 className="h2-heading">News</h2>
         <div className=" overflow-hidden">

@@ -3,7 +3,7 @@ import { IoIosJournal } from "react-icons/io";
 import { MdCardMembership } from "react-icons/md";
 const ProfessionalServices = () => {
   return (
-    <div className=" w-[90%] xl:w-4/5 bg-white text-black mb-10">
+    <div className="mb-10">
       <h2 className="h2-heading">Professional Services</h2>
       <div className="flex flex-col lg:flex-row px-2 gap-x-10">
         <div className="w-full lg:w-1/3">

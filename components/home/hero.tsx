@@ -5,7 +5,7 @@ import { FaGraduationCap } from "react-icons/fa";
 
 export default function Hero() {
   return (
-    <div className="mb-12 w-[90%] xl:w-4/5 bg-white flex flex-col lg:flex-row text-black">
+    <div className="mb-12 flex flex-col lg:flex-row text-black">
       <div className="w-full lg:w-1/3 flex flex-col items-center mt-16">
         <Image
           src={"https://swalpa.github.io/old-portfolio/img/SKR.jpeg"}

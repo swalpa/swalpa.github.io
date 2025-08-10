@@ -4,7 +4,7 @@ import { refactorPublications } from "@/lib/refactor-publications";
 import { cn } from "@/lib/utils";
 import { TPublication } from "@/lib/validations/publications";
 import axios from "axios";
-import { sanitize } from "isomorphic-dompurify";
+import DOMPurify from "isomorphic-dompurify";
 import { LucideCalendar } from "lucide-react";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -37,7 +37,7 @@ const Page = async () => {
   return (
     <Suspense fallback={<Loading />}>
       <main className="w-full flex flex-col items-center p-3 lg:p-5 min-h-screen">
-        <div className="w-full md:w-4/5 lg:w-4/5 xl:w-3/4">
+        <div className="w-full">
           <h2 className="h2-heading mb-1 lg:my-3">Publications</h2>
 
           <div className="flex flex-col items-center mt-5">
@@ -107,7 +107,7 @@ function PublicationComp({ publication }: { publication: TPublication }) {
       <p className="text-base font-semibold mt-0.5">{publication.index}</p>
       <div className="my-1.5">
         <i
-          dangerouslySetInnerHTML={{ __html: sanitize(publication.authors) }}
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(publication.authors) }}
         />
         &nbsp; &quot;
         {publication.paperLink ? (

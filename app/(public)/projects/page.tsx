@@ -28,7 +28,7 @@ const Page = async () => {
 
   return (
     <div className="min-h-[85vh] w-full flex flex-col items-center p-3 pb-2 lg:p-5 bg-[#feffff] ">
-      <p className="h2-heading w-full md:w-4/5 lg:w-3/4 h-fit md:mt-5">Grants and Funding</p>
+      <p className="h2-heading w-full lg:w-4/5 h-fit md:mt-5">Grants and Funding</p>
       <div className="w-full md:w-4/5 lg:w-3/4 p-1 space-y-2 lg:p-2">
         {data.map((project, index) => (
           <div

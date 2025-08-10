@@ -10,7 +10,7 @@ const Page = async () => {
   if (!teamData) return <Loading />;
 
   return (
-    <main className="flex flex-col items-center py-5 p-2.5 lg:p-3 xl:p-5 min-h-screen bg-[#F4F2F4]">
+    <main className="flex flex-col items-center w-full xl:w-4/5 py-5 p-2.5 lg:p-3 xl:p-5 min-h-screen">
       <TeamCategory
         data={teamData.filter((member) => member.category === "mentor" && member.name !== "Prof. (Dr.) Sushmita Mitra")}
         categoryName="Mentors"

@@ -23,7 +23,7 @@ const Page = async () => {
   const teachingsHighlights = await getTeachings();
   return (
     <div className="w-full flex justify-center p-4 lg:p-7 min-h-screen bg-[#feffff]">
-      <div className=" w-full md:w-3/4 lg:w-3/4 xl:w-2/3">
+      <div className=" w-full lg:w-[90%] xl:w-4/5">
         <h2 className="text-4xl font-semibold pb-2">Teachings</h2>
         {teachingsHighlights &&
           teachingsHighlights.map((teachingHighlight, index) => (

@@ -50,7 +50,7 @@ const Page = async () => {
   if (!achievements) return <Loading />;
   return (
     <main className="w-full flex justify-center p-3 lg:p-5 min-h-screen bg-[#feffff]">
-      <div className="w-full md:w-4/5 md:min-w-[770px] lg:w-4/5 lg:min-w-[900px] xl:w-3/4">
+      <div className="w-full md:w-4/5 md:min-w-[770px] lg:min-w-[900px] xl:w-4/5">
         <h2 className="h2-heading">Honors and Awards</h2>
         {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center md:px-1.5 lg:px-3">
             {achievements
