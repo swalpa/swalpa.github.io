@@ -43,7 +43,8 @@ const mediaImages: string[] = [
 const academicImages = [
   "https://i.postimg.cc/V61f1t3p/6305399092091666670.jpg",
   "https://i.postimg.cc/d0Gsz6SG/6305399092091666671.jpg",
-  "https://i.postimg.cc/yxwsrP0m/DSC-7696.webp"
+  "https://i.postimg.cc/yxwsrP0m/DSC-7696.webp",
+  "https://i.postimg.cc/bN96Y3Dj/Associate-Batch-2024-2.jpg",
 ];
 
 const Page = async () => {
