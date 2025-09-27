@@ -27,7 +27,8 @@ export const metadata: Metadata = {
   ],
 };
 
-const images: string[] = [
+const mediaImages: string[] = [
+  "https://i.postimg.cc/ZqXgSYmd/22-09-2025.png",
   "https://i.postimg.cc/bN96Y3Dj/Associate-Batch-2024-2.jpg",
   "https://i.postimg.cc/xdMV3sDx/240717-23h16m42s-screenshot.png",
   "https://i.postimg.cc/MKJPmv4x/6305398456436506913.jpg",
@@ -95,40 +96,40 @@ const Page = async () => {
               ))}
           </ul>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3 lg:gap-4 px-2 md:px-6 lg:px-8 mt-4">
-          {academicImages.map((image, index) => (
-            <Dialog key={index}>
-              <DialogTrigger
-                key={index}
-                className="p-4 bg-zinc-100 shadow-sm shadow-black/10 rounded-sm border border-black/5"
-              >
-                <div className="h-56 overflow-hidden">
+            {academicImages.map((image, index) => (
+              <Dialog key={index}>
+                <DialogTrigger
+                  key={index}
+                  className="p-4 bg-zinc-100 shadow-sm shadow-black/10 rounded-sm border border-black/5"
+                >
+                  <div className="h-56 overflow-hidden">
+                    <Image
+                      src={image}
+                      alt="Media Coverage"
+                      width={300}
+                      height={300}
+                    />
+                  </div>
+                </DialogTrigger>
+                <DialogContent className="max-h-fit flex flex-col items-center">
                   <Image
                     src={image}
                     alt="Media Coverage"
                     width={300}
                     height={300}
+                    className="max-h-[48rem] w-full object-contain mt-1.5"
                   />
-                </div>
-              </DialogTrigger>
-              <DialogContent className="max-h-fit flex flex-col items-center">
-                <Image
-                  src={image}
-                  alt="Media Coverage"
-                  width={300}
-                  height={300}
-                  className="max-h-[48rem] w-full object-contain mt-1.5"
-                />
-                <Link
-                  href={image}
-                  target="_blank"
-                  className="w-fit flex items-center gap-x-2 bg-black rounded-md text-white p-2 px-4 font-medium hover:bg-black/80 transition"
-                >
-                  Expand
-                </Link>
-              </DialogContent>
-            </Dialog>
-          ))}
-        </div>
+                  <Link
+                    href={image}
+                    target="_blank"
+                    className="w-fit flex items-center gap-x-2 bg-black rounded-md text-white p-2 px-4 font-medium hover:bg-black/80 transition"
+                  >
+                    Expand
+                  </Link>
+                </DialogContent>
+              </Dialog>
+            ))}
+          </div>
         </div>
         {/* <div className="my-3 mb-7 pr-1">
           <h3 className="text-2xl font-semibold my-2 md:px-2 flex gap-x-1 items-center">
@@ -146,7 +147,7 @@ const Page = async () => {
           <LucideAward size={23} /> Media highlights
         </h3>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3 lg:gap-4 px-2 md:px-6 lg:px-8">
-          {images.map((image, index) => (
+          {mediaImages.map((image, index) => (
             <Dialog key={index}>
               <DialogTrigger
                 key={index}
