@@ -29,7 +29,6 @@ export const metadata: Metadata = {
 
 const mediaImages: string[] = [
   "https://i.postimg.cc/ZqXgSYmd/22-09-2025.png",
-  "https://i.postimg.cc/bN96Y3Dj/Associate-Batch-2024-2.jpg",
   "https://i.postimg.cc/xdMV3sDx/240717-23h16m42s-screenshot.png",
   "https://i.postimg.cc/MKJPmv4x/6305398456436506913.jpg",
   "https://i.ibb.co/7jJg8j5/Whats-App-Image-2024-02-10-at-3-24-29-PM-1.jpg",
