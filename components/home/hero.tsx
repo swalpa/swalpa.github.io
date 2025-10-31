@@ -24,7 +24,7 @@ export default function Hero() {
           target="_blank"
           className="text-blue-400 underline lg:text-black lg:no-underline hover:text-blue-400 hover:underline text-center"
         >
-          Tezpur University (A Central Univerisy)
+          Tezpur University (A Central University)
         </a>
         <div className="flex gap-x-4 items-center justify-center mt-4">
           {profileLinks.map((link, index) => (
