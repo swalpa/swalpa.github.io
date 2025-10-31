@@ -18,13 +18,13 @@ export default function Hero() {
         <h2 className="text-2xl lg:text-3xl font-semibold">
           Dr. Swalpa Kumar Roy
         </h2>
-        <i className="opacity-80">Assistant Professor, W.B.G.S</i>
+        <i className="opacity-80">Associate Professor</i>
         <a
-          href="https://agemc.ac.in/"
+          href="https://www.tezu.ernet.in/"
           target="_blank"
           className="text-blue-400 underline lg:text-black lg:no-underline hover:text-blue-400 hover:underline text-center"
         >
-          Alipurduar Government Engineering and Management College
+          Tezpur University (A Central Univerisy)
         </a>
         <div className="flex gap-x-4 items-center justify-center mt-4">
           {profileLinks.map((link, index) => (
@@ -52,10 +52,9 @@ export default function Hero() {
             Swalpa Kumar Roy (Bengali: স্বল্প কুমার রায়) is currently Associate Professor associated with the Department of Computer Science and Engineering, Tezpur University (A Central University), Assam. 
             Prior to joining Tezpur University, he served in the Department of Computer Science and Engineering at Alipurduar Government Engineering and Management College, Alipurduar, from August 2023 
             to October 2025 and earlier at Jalpaiguri Government Engineering College, Jalpaiguri — the fifth oldest technical institution and one of the most prestigious engineering colleges in 
-            West Bengal — where he held the position of Assistant Professor. Swalpa Kumar Roy is also working with Prof. Bhabatosh Chanda, Fellow, IAPR and Prof. Bidyut Baran Chaudhuri, Fellow, IEEE, 
+            West Bengal — where he held the position of Assistant Professor from March 2018 to July 2023. Swalpa Kumar Roy is also working with Prof. Bhabatosh Chanda, Fellow, IAPR and Prof. Bidyut Baran Chaudhuri, Fellow, IEEE, 
             Computer Vision and Pattern Recognition (CVPR) Unit at Indian Statistical Institute, Kolkata during his Ph.D. research. He is also working under Prof. Soumitro Banerjee,
-            Fellow, IEEE, at Indian Institute of Science Education and Research, Kolkata. Before joining CVPR Unit, ISI Kolkata, he received his B.
-            Tech (Computer Science & Engineering) degree from West Bengal University of Technology, Kolkata, and M. E (Computer Science &
+            Fellow, IEEE, at Indian Institute of Science Education and Research, Kolkata. Before joining CVPR Unit, ISI Kolkata, he received his B.Tech (Computer Science & Engineering) degree from West Bengal University of Technology, Kolkata, and M. E (Computer Science &
             Engineering) degree from the Indian Institute of Engineering Science and Technology, Shibpur. He also worked as a Project-Linked-Person
             (PLP) at the OCR Lab, CVPR Unit, Indian Statistical Institute,Kolkata.
           </section>
@@ -66,11 +65,11 @@ export default function Hero() {
             <section>
               <ul className="list-disc pl-10 text-lg">
                 <li>Computer Vision</li>
-                <li>Computational Biology</li>
                 <li>Deep Learning</li>
-                <li>Hyperspectral Imaging</li>
-                <li>Image Processing</li>
-                <li>Texture Feature Description</li>
+                <li>GeoAI</li>
+                <li>ResponsibleAI</li>
+                <li>Earth Observation</li>
+                <li>Remote Sensing</li>
               </ul>
             </section>
           </div>
