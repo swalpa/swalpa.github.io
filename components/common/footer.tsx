@@ -41,13 +41,13 @@ const Footer = () => {
           <div className="w-[20px] h-[20px]">
             <LucideMail className="text-sm px-1" />
           </div>
-          swalpa@agemc.ac.in
+          swalpa@tezu.ernet.in
         </div>
         <div className="flex gap-1 w-56 items-center">
           <div className="w-[20px] h-[20px]">
             <LucideMail className="text-sm px-1" />
           </div>
-          swalpa@cse.jgec.ac.in
+          swalpa@agemc.ac.in
         </div>
         <div className="flex gap-1 w-56 items-center">
           <div className="w-[20px] h-[20px]">
