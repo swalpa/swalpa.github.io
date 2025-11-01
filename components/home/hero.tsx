@@ -49,7 +49,7 @@ export default function Hero() {
         <div className="mt-20 w-full">
           <h2 className="h2-heading ml-2 w-full">Biography</h2>
           <section className="pl-3 lg:pl-7 text-justify">
-            Swalpa Kumar Roy (Bengali: স্বল্প কুমার রায়) is currently Associate Professor associated with the Department of Computer Science and Engineering, Tezpur University (A Central University), Assam. 
+            Swalpa Kumar Roy (Bengali: স্বল্প কুমার রায়) is currently Associate Professor working with the Department of Computer Science and Engineering in a Central University. 
             Prior to his joining, he also served in the Department of Computer Science and Engineering at Alipurduar Government Engineering and Management College, Alipurduar, from August 2023 
             to October 2025 and earlier at Jalpaiguri Government Engineering College, Jalpaiguri — the fifth oldest technical institution and one of the most prestigious engineering colleges in 
             West Bengal — where he held the position of Assistant Professor from March 2018 to July 2023. Swalpa Kumar Roy is also working with Prof. Bhabatosh Chanda, Fellow, IAPR and Prof. Bidyut Baran Chaudhuri, Fellow, IEEE, 
